@@ -71,7 +71,24 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.locals.title = 'Express - Generated with IronGenerator';
 
 
+
+const auth = require('./routes/auth');
+const comments = require('./routes/ongs');
+const events = require('./routes/ongs');
+const experiences = require('./routes/ongs');
 const index = require('./routes/index');
+const jobs = require('./routes/ongs');
+const ongs = require('./routes/ongs');
+const posts = require('./routes/ongs');
+
+
+app.use('/', auth);
+app.use('/', comments);
+app.use('/', events);
+app.use('/', experiences);
+app.use('/', jobs);
+app.use('/', ongs);
+app.use('/', posts);
 app.use('/', index);
 
 

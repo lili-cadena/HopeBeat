@@ -6,16 +6,13 @@ const experienceSchema = new Schema({
         type: String,
         required:true
     },
-    ong: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'ONG',
-        }
-    ],
+    ong: {
+        type: String,
+        required:true
+    },
     logo: {
-        type: Schema.Types.ObjectId,
-        ref: 'ONG',
-        childPath: 'photoURL'
+        type: String,
+        default: ''
     },
     startDate: {
         type: Date,

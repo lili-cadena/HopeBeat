@@ -1,16 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const volunteeringPositionSchema = new Schema({
+const jobSchema = new Schema({
     seniorityLevel: String,
     weeklyRequiredHours: Number, 
     position: {
         type: String,
         required:true
-    },
-    ongOwner: {
-        type: Schema.Types.ObjectId,
-        ref: 'ONG'
     },
     location: {
         type: String,
@@ -39,4 +35,4 @@ const volunteeringPositionSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('VolunteeringPosition', volunteeringPositionSchema);
+module.exports = mongoose.model('Job', jobSchema);

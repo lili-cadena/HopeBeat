@@ -8,10 +8,6 @@ const postSchema = new Schema({
             required:true
         }
     ],
-    ongOwner: {
-        type: Schema.Types.ObjectId,
-        ref: 'ONG'
-    },
     likes: [
         {
             type: Schema.Types.ObjectId,

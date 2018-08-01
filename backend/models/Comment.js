@@ -6,10 +6,10 @@ const commentSchema = new Schema({
         type: String,
         required:true
     },
-    owner: {
-        type: Schema.Types.ObjectId,
-        ref: 'Volunteer'
-    },
+    // volunteer: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Volunteer'
+    // },
 },{
     timestamps:{
         createdAt: 'created_at',

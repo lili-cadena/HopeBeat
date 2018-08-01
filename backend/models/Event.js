@@ -6,10 +6,6 @@ const eventSchema = new Schema({
         type: String,
         required:true
     },
-    ongOwner: {
-        type: Schema.Types.ObjectId,
-        ref: 'ONG'
-    },
     startDate: {
         type: Date,
         required:true

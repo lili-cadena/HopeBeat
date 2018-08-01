@@ -3,10 +3,6 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const volunteerSchema = new Schema({
-    active: {
-        type: Boolean,
-        default: false
-    },
     username: {
         type: String,
         required:true
@@ -24,12 +20,23 @@ const volunteerSchema = new Schema({
         default: ''
     },
     summary: String,
-    causes: [String],
+    causes: [
+        {
+            type: String,
+            required:true
+        }
+    ],
     locations: [String],
     occupations: [
         {
             type:String,
             required: true
+        }
+    ],
+    ongs:[
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'ONG',
         }
     ],
     experiences:[

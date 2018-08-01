@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ongSchema = new Schema({
-    summary: String,
-    location: String,
     active: {
         type: Boolean,
         default: false
@@ -12,9 +10,19 @@ const ongSchema = new Schema({
         type: String,
         required:true
     },
-    causes: {
+    causes: [
+        {
+            type: String,
+            required:true
+        }
+    ],
+    summary:{
         type: String,
-        default: false
+        required:true
+    },
+    location:{
+        type: String,
+        required:true
     },
     photoURL: {
         type: String,
@@ -24,22 +32,16 @@ const ongSchema = new Schema({
         type: String,
         default: ''
     },
-    owner:[
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Volunteer',
-        }
-    ],
     events:[
         {
             type: Schema.Types.ObjectId,
             ref: 'Event',
         },
     ],
-    volunteeringPositions:[
+    jobs:[
         {
             type: Schema.Types.ObjectId,
-            ref: 'VolunteeringPosition',
+            ref: 'Job',
         }
     ],
     posts:[
