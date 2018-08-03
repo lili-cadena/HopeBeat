@@ -1,0 +1,139 @@
+<div id="home">
+    
+    <div class="uk-height-viewport uk-background-cover uk-light uk-flex uk-flex-top" style="background-image: url('https://res.cloudinary.com/dzt4wkac0/image/upload/v1533219726/landingBG5.png');">
+        
+        <img src="https://res.cloudinary.com/dzt4wkac0/image/upload/v1533218797/LogoHBSmall2.png" alt="HBlogo" class="uk-position-top-left uk-position-large">
+        <h3><a class="uk-button uk-button-default login uk-position-top-right uk-light uk-position-large"  href="#login" uk-toggle>Login</a></h3>
+
+        <div class="uk-flex uk-flex-column uk-position-center">
+            <h3 class="uk-text-large uk-text-center uk-margin-medium">Find your cause</h3>
+            <br>
+            <h3><a class="uk-button uk-button-danger uk-position-center" href="#signup" uk-toggle>Get started</a></h3>
+        </div>
+
+    </div>
+
+    <div class="uk-section uk-section-default uk-margin-medium">
+        <div class="uk-container">
+            <div class="uk-grid-match uk-child-width-expand@m" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">
+                        <span uk-icon="icon: heart; ratio: 2"></span>
+                        <p>Follow NGOs</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">
+                        <span uk-icon="icon: calendar; ratio: 2"></span>
+                        <p>Find volunteer events in your city</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body">
+                        <span uk-icon="icon: sign-in; ratio: 2"></span>
+                        <p>Apply to volunteering</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-section uk-section-secondary uk-light">
+        <div class="uk-container">
+            <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
+                <div>
+                    <p class="">© 2018 HopeBeat</p>
+                </div>
+                <div>
+                </div>
+                
+                <div>
+                    <ul class="uk-iconnav">
+                        <li><a href="https://www.facebook.com/lili.cadena" uk-icon="icon: facebook; ratio: 1.5"></a></li>
+                        <li><a href="https://www.instagram.com/lili_cadena" uk-icon="icon: instagram; ratio: 1.5"></a></li>
+                        <li><a href="https://twitter.com/Lili__Cadena" uk-icon="icon: twitter; ratio: 1.5"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="signup" uk-modal>
+    <div class="uk-modal-dialog">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">Sing up</h2>
+        </div>
+        <div class="uk-modal-body">
+            <form validated>
+                <fieldset class="uk-fieldset">
+                    <div class="uk-margin">
+                        <div class="uk-inline">
+                            <span class="uk-form-icon" uk-icon="icon: user"></span>
+                            <input class="uk-input uk-form-width-large" type="text" placeholder="User Name" [(ngModel)]="username" required>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline">
+                            <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                            <input class="uk-input uk-form-width-large" type="email" placeholder="Email" [(ngModel)]="email" required>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input uk-form-width-large" type="password" placeholder="Password" [(ngModel)]="password" required>
+                        </div>
+                    </div>
+                    <p class="uk-text-bold">Choose 3 causes of your interest:</p>
+                    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                        <label><input class="uk-checkbox" type="checkbox"> Poverty</label>
+                        <label><input class="uk-checkbox" type="checkbox"> Human Rights</label>
+                        <label><input class="uk-checkbox" type="checkbox"> Health</label>
+                        <label><input class="uk-checkbox" type="checkbox"> Education</label>
+                        <label><input class="uk-checkbox" type="checkbox"> Climate Change</label>
+                        <label><input class="uk-checkbox" type="checkbox"> Animals</label>
+                    </div>
+                </fieldset>
+            </form>
+            <button class="uk-button uk-button-primary uk-width-1-2 uk-margin-small-bottom"><span uk-icon="icon: facebook"></span> Signup with Facebook</button>
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="button">Submit</button>
+        </div>
+    </div>
+</div>
+
+<div id="login" uk-modal>
+    <div class="uk-modal-dialog">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">Login</h2>
+        </div>
+        <div class="uk-modal-body">
+           <form validated>
+                <div class="uk-margin">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: user"></span>
+                        <input class="uk-input uk-form-width-large" type="email" [(ngModel)]="email"required>
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                        <input class="uk-input uk-form-width-large" type="password" [(ngModel)]="password" required>
+                    </div>
+                </div>
+            </form>
+            <button class="uk-button uk-button-primary uk-width-1-2 uk-margin-small-bottom"><span uk-icon="icon: facebook"></span> Login with Facebook</button>
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="button">Submit</button>
+        </div>
+    </div>
+</div>
+
+

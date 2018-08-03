@@ -27,12 +27,6 @@ const volunteerSchema = new Schema({
         }
     ],
     locations: [String],
-    occupations: [
-        {
-            type:String,
-            required: true
-        }
-    ],
     ongs:[
         {
             type: Schema.Types.ObjectId,

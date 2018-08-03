@@ -2,10 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const jobSchema = new Schema({
-    seniorityLevel: String,
-    weeklyRequiredHours: Number, 
     position: {
         type: String,
+        required:true
+    },
+    weeklyRequiredHours: {
+        type: Number,
         required:true
     },
     location: {

@@ -1,20 +1,118 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<router-outlet>
 
+<div class="navBar" *ngIf="!isHome">
+
+    <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
+        <nav class="uk-navbar-container" uk-navbar style="position: relative; z-index: 980;">
+
+            <div class="uk-navbar-left">
+                <a class="uk-navbar-item uk-logo" href="#"><img src="https://res.cloudinary.com/dzt4wkac0/image/upload/v1533233202/LogoHBSmall3.png" alt="HBlogo"></a>
+                <div class="uk-navbar-item">
+                    <form action="javascript:void(0)">
+                        <input class="uk-input uk-form-width-large" type="text" placeholder="Input">
+                        <button class="uk-button uk-button-default uk-light">Search</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav">
+                <li>
+                    <a class="uk-navbar-item" href="#">Home</a>
+                </li>
+
+                <li>
+                <a class="uk-navbar-item" href="#">
+                    <img class="uk-border-circle" src="https://scontent.fmex6-1.fna.fbcdn.net/v/t1.0-9/23843343_10155316645486731_4760985230253273152_n.jpg?_nc_cat=0&oh=83154aa9390bf1b65a16ba9e974fc81a&oe=5BD14952" width="40" height="40" alt="photoURL">
+                </a>
+                </li>
+
+                <li>
+                <a class="uk-navbar-item" href="#">User Name</a>
+                </li>
+
+                <li>
+                <span class="uk-navbar-item" uk-icon="icon: plus"></span>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                            
+                    <li class="uk-active"><a href="#new-ong" uk-toggle><span uk-icon="icon: plus"></span> Add new NGO</a></li>
+                    <li>
+                        <a href="#">
+                        <img src="https://botw-pd.s3.amazonaws.com/styles/logo-thumbnail/s3/0020/8510/brand.gif?itok=EUd2bI_M" width="20" height="20">
+                            Soñar Despierto
+                        </a>
+                    </li>
+                    </ul>
+                </div>
+                </li>
+            </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div id="new-ong" uk-modal>
+    <div class="uk-modal-dialog">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">Register a NGO</h2>
+        </div>
+        <div class="uk-modal-body" uk-overflow-auto>
+            <form>
+                <div class="uk-margin">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: user"></span>
+                        <input class="uk-input" type="text" placeholder="Name">
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: pencil"></span>
+                        <input class="uk-input" type="text" placeholder="What you do?">
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: location"></span>
+                        <input class="uk-input" type="text" placeholder="Location">
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+                        <input class="uk-input" type="number" placeholder="Telephone">
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: link"></span>
+                        <input class="uk-input" type="text" placeholder="Website">
+                    </div>
+                </div>
+                <div class="uk-margin" uk-margin>
+                    <div uk-form-custom="target: true">
+                        <input type="file">
+                        <input class="uk-input uk-form-width-medium" type="text" placeholder="Select your logo" disabled>
+                    </div>
+                    <button class="uk-button uk-button-default">Submit</button>
+                </div>
+                <p class="uk-text-bold">Your NGO principal causes:</p>
+                <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                    <label><input class="uk-checkbox" type="checkbox"> Poverty</label>
+                    <label><input class="uk-checkbox" type="checkbox"> Human Rights</label>
+                    <label><input class="uk-checkbox" type="checkbox"> Health</label>
+                    <label><input class="uk-checkbox" type="checkbox"> Education</label>
+                    <label><input class="uk-checkbox" type="checkbox"> Climate Change</label>
+                    <label><input class="uk-checkbox" type="checkbox"> Animals</label>
+                </div>
+            </form>
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="button">Submit</button>
+        </div>
+    </div>
+</div>
+
+</router-outlet>

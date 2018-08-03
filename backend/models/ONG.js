@@ -32,6 +32,8 @@ const ongSchema = new Schema({
         type: String,
         default: ''
     },
+    telephones:[Number],
+    webSite:String,
     events:[
         {
             type: Schema.Types.ObjectId,

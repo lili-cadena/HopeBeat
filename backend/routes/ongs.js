@@ -22,7 +22,7 @@ router.post('/new/ong', validate.isAuth, (req,res)=>{
 
 //Get ONGs
 
-router.get('/', (req,res)=>{
+router.get('/', validate.isAuth, (req,res)=>{
   ONG.find()
   .then(ongs =>{
     return res.status(202).json(ongs);
@@ -33,7 +33,7 @@ router.get('/', (req,res)=>{
 })
 
 //Get one ONG
-router.get('/:id', (req,res)=>{
+router.get('/:id', validate.isAuth, (req,res)=>{
   ONG.findById(req.params.id)
   .then(ong=>{
     if(!ong) return res.status(404)
@@ -45,7 +45,7 @@ router.get('/:id', (req,res)=>{
 })
 
 //Edit a ONG
-router.put('/:id', (req,res)=>{
+router.put('/:id', validate.isAuth, (req,res)=>{
   ONG.findByIdAndUpdate(req.params.id, req.body, {new:true})
   .then(ong=>{
       return res.status(202).json(ong)
@@ -56,7 +56,7 @@ router.put('/:id', (req,res)=>{
 })
 
 //Delete a ONG
-router.delete('/:id', (req,res,next)=>{
+router.delete('/:id', validate.isAuth, (req,res,next)=>{
   ONG.findByIdAndRemove(req.params.id)
   .then(ong=>{
       return res.status(202).json(ong)

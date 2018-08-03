@@ -21,7 +21,7 @@ router.post('/:id', validate.isAuth, (req,res)=>{
 })
 
 //Get Posts
-router.get('/', (req,res)=>{
+router.get('/', validate.isAuth, (req,res)=>{
   Post.find()
   .then(posts =>{
     return res.status(202).json(posts);
@@ -32,7 +32,7 @@ router.get('/', (req,res)=>{
 })
 
 //Get one Post
-router.get('/:id', (req,res)=>{
+router.get('/:id', validate.isAuth, (req,res)=>{
   Post.findById(req.params.id)
   .then(post=>{
     if(!post) return res.status(404)
@@ -44,7 +44,7 @@ router.get('/:id', (req,res)=>{
 })
 
 //Edit a Post
-router.put('/:id', (req,res)=>{
+router.put('/:id', validate.isAuth, (req,res)=>{
   Post.findByIdAndUpdate(req.params.id, req.body, {new:true})
   .then(post=>{
       return res.status(202).json(post)
@@ -55,7 +55,7 @@ router.put('/:id', (req,res)=>{
 })
 
 //Delete a Post
-router.delete('/:id', (req,res,next)=>{
+router.delete('/:id', validate.isAuth, (req,res,next)=>{
   Post.findByIdAndRemove(req.params.id)
   .then(post=>{
       return res.status(202).json(post)

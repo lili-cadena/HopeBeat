@@ -21,7 +21,7 @@ router.post('/:id', validate.isAuth, (req,res)=>{
 })
 
 //Get Events
-router.get('/', (req,res)=>{
+router.get('/', validate.isAuth, (req,res)=>{
   Eevent.find()
   .then(events =>{
     return res.status(202).json(events);
@@ -32,7 +32,7 @@ router.get('/', (req,res)=>{
 })
 
 //Get one Experience
-router.get('/:id', (req,res)=>{
+router.get('/:id', validate.isAuth,(req,res)=>{
   Eevent.findById(req.params.id)
   .then(event =>{
     if(!event) return res.status(404)
@@ -44,7 +44,7 @@ router.get('/:id', (req,res)=>{
 })
 
 //Edit a Experience
-router.put('/:id', (req,res)=>{
+router.put('/:id', validate.isAuth, (req,res)=>{
   Eevent.findByIdAndUpdate(req.params.id, req.body, {new:true})
   .then(event=>{
       return res.status(202).json(event)
@@ -55,7 +55,7 @@ router.put('/:id', (req,res)=>{
 })
 
 //Delete a Experience
-router.delete('/:id', (req,res,next)=>{
+router.delete('/:id', validate.isAuth, (req,res,next)=>{
   Eevent.findByIdAndRemove(req.params.id)
   .then(event=>{
       return res.status(202).json(event)

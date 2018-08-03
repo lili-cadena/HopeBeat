@@ -21,7 +21,7 @@ router.post('/:id', validate.isAuth, (req,res)=>{
 })
 
 //Get Jobs
-router.get('/', (req,res)=>{
+router.get('/', validate.isAuth, (req,res)=>{
   Job.find()
   .then(jobs =>{
     return res.status(202).json(jobs);
@@ -32,7 +32,7 @@ router.get('/', (req,res)=>{
 })
 
 //Get one Job
-router.get('/:id', (req,res)=>{
+router.get('/:id', validate.isAuth, (req,res)=>{
   Job.findById(req.params.id)
   .then(job=>{
     if(!job) return res.status(404)
@@ -44,7 +44,7 @@ router.get('/:id', (req,res)=>{
 })
 
 //Edit a Job
-router.put('/:id', (req,res)=>{
+router.put('/:id', validate.isAuth, (req,res)=>{
   Job.findByIdAndUpdate(req.params.id, req.body, {new:true})
   .then(job=>{
       return res.status(202).json(job)
@@ -55,7 +55,7 @@ router.put('/:id', (req,res)=>{
 })
 
 //Delete a Job
-router.delete('/:id', (req,res,next)=>{
+router.delete('/:id', validate.isAuth, (req,res,next)=>{
   Job.findByIdAndRemove(req.params.id)
   .then(job=>{
       return res.status(202).json(job)

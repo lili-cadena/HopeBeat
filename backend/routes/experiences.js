@@ -21,7 +21,7 @@ router.post('/new/experience', validate.isAuth, (req,res)=>{
 })
 
 //Get Experiences
-router.get('/', (req,res)=>{
+router.get('/', validate.isAuth, (req,res)=>{
   Experience.find()
   .then(experiences =>{
     return res.status(202).json(experiences);
@@ -32,7 +32,7 @@ router.get('/', (req,res)=>{
 })
 
 //Get one Experience
-router.get('/:id', (req,res)=>{
+router.get('/:id', validate.isAuth, (req,res)=>{
   Experience.findById(req.params.id)
   .then(experience=>{
     if(!experience) return res.status(404)
@@ -44,7 +44,7 @@ router.get('/:id', (req,res)=>{
 })
 
 //Edit a Experience
-router.put('/:id', (req,res)=>{
+router.put('/:id', validate.isAuth, (req,res)=>{
   Experience.findByIdAndUpdate(req.params.id, req.body, {new:true})
   .then(experience=>{
       return res.status(202).json(experience)
@@ -55,7 +55,7 @@ router.put('/:id', (req,res)=>{
 })
 
 //Delete a Experience
-router.delete('/:id', (req,res,next)=>{
+router.delete('/:id', validate.isAuth, (req,res,next)=>{
   Experience.findByIdAndRemove(req.params.id)
   .then(experience=>{
       return res.status(202).json(experience)

@@ -39,7 +39,7 @@ router.post('/post/:id', validate.isAuth, (req,res)=>{
 })
 
 //Get Comments
-router.get('/', (req,res)=>{
+router.get('/', validate.isAuth, (req,res)=>{
   Coomment.find()
   .then(comments =>{
     return res.status(202).json(comments);
@@ -50,7 +50,7 @@ router.get('/', (req,res)=>{
 })
 
 //Get one Comment
-router.get('/:id', (req,res)=>{
+router.get('/:id', validate.isAuth, (req,res)=>{
   Coomment.findById(req.params.id)
   .then(comment =>{
     if(!comment) return res.status(404)
@@ -62,7 +62,7 @@ router.get('/:id', (req,res)=>{
 })
 
 //Edit a Comment
-router.put('/:id', (req,res)=>{
+router.put('/:id', validate.isAuth, (req,res)=>{
   Coomment.findByIdAndUpdate(req.params.id, req.body, {new:true})
   .then(comment=>{
       return res.status(202).json(comment)
@@ -73,7 +73,7 @@ router.put('/:id', (req,res)=>{
 })
 
 //Delete a Comment
-router.delete('/:id', (req,res,next)=>{
+router.delete('/:id', validate.isAuth, (req,res,next)=>{
   Coomment.findByIdAndRemove(req.params.id)
   .then(comment=>{
       return res.status(202).json(comment)
