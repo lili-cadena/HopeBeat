@@ -1,4 +1,4 @@
-<div id="home">
+<div id="home" *ngIf='!showNavBar'>
     
     <div class="uk-height-viewport uk-background-cover uk-light uk-flex uk-flex-top" style="background-image: url('https://res.cloudinary.com/dzt4wkac0/image/upload/v1533219726/landingBG5.png');">
         
@@ -71,29 +71,29 @@
                     <div class="uk-margin">
                         <div class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: user"></span>
-                            <input class="uk-input uk-form-width-large" type="text" placeholder="User Name" [(ngModel)]="username" required>
+                            <input class="uk-input uk-form-width-large" type="text" placeholder="User Name" [(ngModel)]="auth.username" name="username" required>
                         </div>
                     </div>
                     <div class="uk-margin">
                         <div class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: mail"></span>
-                            <input class="uk-input uk-form-width-large" type="email" placeholder="Email" [(ngModel)]="email" required>
+                            <input class="uk-input uk-form-width-large" type="email" placeholder="Email" [(ngModel)]="auth.email" name="email" required>
                         </div>
                     </div>
                     <div class="uk-margin">
                         <div class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                            <input class="uk-input uk-form-width-large" type="password" placeholder="Password" [(ngModel)]="password" required>
+                            <input class="uk-input uk-form-width-large" type="password" placeholder="Password" [(ngModel)]="auth.password" name="password" #myPassword="ngModel" required>
                         </div>
                     </div>
                     <p class="uk-text-bold">Choose 3 causes of your interest:</p>
                     <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                        <label><input class="uk-checkbox" type="checkbox"> Poverty</label>
-                        <label><input class="uk-checkbox" type="checkbox"> Human Rights</label>
-                        <label><input class="uk-checkbox" type="checkbox"> Health</label>
-                        <label><input class="uk-checkbox" type="checkbox"> Education</label>
-                        <label><input class="uk-checkbox" type="checkbox"> Climate Change</label>
-                        <label><input class="uk-checkbox" type="checkbox"> Animals</label>
+                        <label><input class="uk-checkbox" type="checkbox" > Poverty</label>
+                        <label><input class="uk-checkbox" type="checkbox" > Human Rights</label>
+                        <label><input class="uk-checkbox" type="checkbox" > Health</label>
+                        <label><input class="uk-checkbox" type="checkbox" > Education</label>
+                        <label><input class="uk-checkbox" type="checkbox" > Climate Change</label>
+                        <label><input class="uk-checkbox" type="checkbox" > Animals</label>
                     </div>
                 </fieldset>
             </form>
@@ -101,10 +101,12 @@
         </div>
         <div class="uk-modal-footer uk-text-right">
             <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-            <button class="uk-button uk-button-primary" type="button">Submit</button>
+            <button class="uk-button uk-button-primary" type="button" (click)="signup()">Submit</button>
         </div>
     </div>
 </div>
+
+
 
 <div id="login" uk-modal>
     <div class="uk-modal-dialog">
@@ -117,13 +119,13 @@
                 <div class="uk-margin">
                     <div class="uk-inline">
                         <span class="uk-form-icon" uk-icon="icon: user"></span>
-                        <input class="uk-input uk-form-width-large" type="email" [(ngModel)]="email"required>
+                        <input class="uk-input uk-form-width-large" type="email" [(ngModel)]="auth.email" name="email"required>
                     </div>
                 </div>
                 <div class="uk-margin">
                     <div class="uk-inline">
                         <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                        <input class="uk-input uk-form-width-large" type="password" [(ngModel)]="password" required>
+                        <input class="uk-input uk-form-width-large" type="password" [(ngModel)]="auth.password" name="password" required>
                     </div>
                 </div>
             </form>
@@ -131,7 +133,7 @@
         </div>
         <div class="uk-modal-footer uk-text-right">
             <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-            <button class="uk-button uk-button-primary" type="button">Submit</button>
+            <button class="uk-button uk-button-primary" type="button" (click)="login()">Submit</button>
         </div>
     </div>
 </div>

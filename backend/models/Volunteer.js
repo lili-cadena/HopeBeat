@@ -23,7 +23,7 @@ const volunteerSchema = new Schema({
     causes: [
         {
             type: String,
-            required:true
+            // required:true
         }
     ],
     locations: [String],

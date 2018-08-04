@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OngsService } from '../../services/ongs.service';
+
 
 @Component({
   selector: 'app-search',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
-  constructor() { }
+  ongs: Array<any>
+  constructor(
+    private ongsService: OngsService,
+  ) { }
 
   ngOnInit() {
+    this.ongsService.getAllOngs()
+    .subscribe(ong=>{
+      this.ongs = ong
+    })
   }
 
 }

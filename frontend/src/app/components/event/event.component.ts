@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event.component.css']
 })
 export class EventComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit() {

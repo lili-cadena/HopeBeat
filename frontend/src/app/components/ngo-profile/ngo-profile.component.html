@@ -1,9 +1,10 @@
+<!-- <h2>ONG name: {{ong.name}}</h2> -->
+
 <div id="ngoProfile">
-    
-    <div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-inline" data-src="https://www.solidbackgrounds.com/images/2560x1440/2560x1440-banana-yellow-solid-color-background.jpg" uk-img>
+
+    <div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-inline" data-src="" uk-img>
         <span class="uk-position-left uk-position-medium uk-text-lead uk-text-bold" >
-            <img class="uk-border-circle uk-position-medium" src="https://botw-pd.s3.amazonaws.com/styles/logo-thumbnail/s3/0020/8510/brand.gif?itok=EUd2bI_M" width="150" height="150">
-            Soñar Despierto
+            <img class="uk-border-circle uk-position-medium" src="" width="150" height="150">
         </span>
         <div>
             <a class="uk-position-bottom-right uk-position-medium" href="#" uk-icon="icon: pencil"></a>
@@ -87,49 +88,49 @@
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: tag"></span>
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Title" [(ngModel)]="title" required>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Title" [(ngModel)]="title" name="title" required>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: calendar"></span>
-                                            <input class="uk-input uk-form-width-medium" type="date" placeholder="Start Day" [(ngModel)]="startDate" required>
+                                            <input class="uk-input uk-form-width-medium" type="date" placeholder="Start Day" [(ngModel)]="startDate" name="startDate" required>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: calendar"></span>
-                                            <input class="uk-input uk-form-width-medium" type="date" placeholder="Final Day" [(ngModel)]="finalDate">
+                                            <input class="uk-input uk-form-width-medium" type="date" placeholder="Final Day" [(ngModel)]="finalDate" name="finalDate">
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: clock"></span>
-                                            <input class="uk-input uk-form-width-medium" type="time" placeholder="Start Hour" [(ngModel)]="startHour" required>
+                                            <input class="uk-input uk-form-width-medium" type="time" placeholder="Start Hour" [(ngModel)]="startHour" name="startHour" required>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: clock"></span>
-                                            <input class="uk-input uk-form-width-medium" type="time" placeholder="Final Hour" [(ngModel)]="finalHour" required>
+                                            <input class="uk-input uk-form-width-medium" type="time" placeholder="Final Hour" [(ngModel)]="finalHour" name="finalHour" required>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: location"></span>
-                                            <input class="uk-input uk-form-width-medium" type="password" placeholder="Location" [(ngModel)]="location" required>
+                                            <input class="uk-input uk-form-width-medium" type="password" placeholder="Location" [(ngModel)]="location" name="location" required>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: info"></span>
-                                            <input class="uk-input uk-form-width-medium" type="password" placeholder="Decription" [(ngModel)]="description" required>
+                                            <input class="uk-input uk-form-width-medium" type="password" placeholder="Decription" [(ngModel)]="description" name="description" required>
                                         </div>
                                     </div>
                                     <div class="uk-margin" uk-margin>
                                         <div uk-form-custom="target: true">
                                             <input type="file">
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Poster" [(ngModel)]="photo" disabled>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Poster" [(ngModel)]="photo" name="photo" disabled>
                                         </div>
                                         <button class="uk-button uk-button-default">Upload</button>
                                     </div>
@@ -151,37 +152,37 @@
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: user"></span>
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Position" [(ngModel)]="position" required>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Position" [(ngModel)]="position" name="position" required>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: clock"></span>
-                                            <input class="uk-input uk-form-width-medium" type="number" placeholder="Required hours" [(ngModel)]="weeklyRequiredHours" required>
+                                            <input class="uk-input uk-form-width-medium" type="number" placeholder="Required hours" [(ngModel)]="weeklyRequiredHours" name="weeklyRequiredHours" required>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: location"></span>
-                                            <input class="uk-input uk-form-width-medium" type="password" placeholder="Location" [(ngModel)]="location" required>
+                                            <input class="uk-input uk-form-width-medium" type="password" placeholder="Location" [(ngModel)]="location" name="location" required>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: info"></span>
-                                            <input class="uk-input uk-form-width-medium" type="password" placeholder="Decription" [(ngModel)]="description" required>
+                                            <input class="uk-input uk-form-width-medium" type="password" placeholder="Decription" [(ngModel)]="description" name="description" required>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: list"></span>
-                                            <input class="uk-input uk-form-width-medium" type="password" placeholder="Requests" [(ngModel)]="requests" required>
+                                            <input class="uk-input uk-form-width-medium" type="password" placeholder="Requests" [(ngModel)]="requests" name="requests" required>
                                         </div>
                                     </div>
                                     <div class="uk-margin" uk-margin>
                                         <div uk-form-custom="target: true">
                                             <input type="file">
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Poster" [(ngModel)]="photo" disabled>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Poster" [(ngModel)]="photo" name="photo" disabled>
                                         </div>
                                         <button class="uk-button uk-button-default">Upload</button>                                        
                                     </div>

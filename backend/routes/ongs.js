@@ -4,10 +4,10 @@ const Volunteer = require ('../models/Volunteer');
 const validate = require('../helpers/validations');
 
 //Post new ONG
-router.post('/new/ong', validate.isAuth, (req,res)=>{
+router.post('/ong', (req,res)=>{
   ONG.create(req.body)
-  .then(ongs=>{
-    Volunteer.findByIdAndUpdate(req.user.id, {$push:{ ongs: ongs }}, {new: true})
+  .then(ong=>{
+    Volunteer.findByIdAndUpdate(req.user.id, {$push:{ ongs: ong }}, {new: true})
     .then(volunteer=>{
       return res.status(202).json(volunteer)
     })
@@ -20,9 +20,8 @@ router.post('/new/ong', validate.isAuth, (req,res)=>{
   })
 })
 
-//Get ONGs
-
-router.get('/', validate.isAuth, (req,res)=>{
+//Get all ONGs
+router.get('/ong', (req,res)=>{
   ONG.find()
   .then(ongs =>{
     return res.status(202).json(ongs);
@@ -33,7 +32,7 @@ router.get('/', validate.isAuth, (req,res)=>{
 })
 
 //Get one ONG
-router.get('/:id', validate.isAuth, (req,res)=>{
+router.get('/ong/:id', (req,res)=>{
   ONG.findById(req.params.id)
   .then(ong=>{
     if(!ong) return res.status(404)
@@ -45,7 +44,7 @@ router.get('/:id', validate.isAuth, (req,res)=>{
 })
 
 //Edit a ONG
-router.put('/:id', validate.isAuth, (req,res)=>{
+router.put('/ong/:id', (req,res)=>{
   ONG.findByIdAndUpdate(req.params.id, req.body, {new:true})
   .then(ong=>{
       return res.status(202).json(ong)
@@ -56,7 +55,7 @@ router.put('/:id', validate.isAuth, (req,res)=>{
 })
 
 //Delete a ONG
-router.delete('/:id', validate.isAuth, (req,res,next)=>{
+router.delete('/ong/:id', (req,res,next)=>{
   ONG.findByIdAndRemove(req.params.id)
   .then(ong=>{
       return res.status(202).json(ong)
