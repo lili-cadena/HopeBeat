@@ -14,7 +14,7 @@ const MongoStore = require("connect-mongo")(session);
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/backend', {useMongoClient: true})
+  .connect('mongodb://lili-cadena1:lili-cadena1@ds018558.mlab.com:18558/ironhack-lili', {useMongoClient: true})
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {

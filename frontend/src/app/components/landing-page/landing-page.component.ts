@@ -30,6 +30,7 @@ export class LandingPageComponent implements OnInit {
     this.authService.signup(this.auth)
     .subscribe(user=>{
       this.user = user
+      localStorage.setItem('user', JSON.stringify(user))
       this.router.navigate(['search']);
     })
   }
