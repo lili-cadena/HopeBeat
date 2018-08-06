@@ -22,6 +22,7 @@ export class ExperiencesService {
   //Get one Experience
   getOneExperience(id){
     return this.http.get(this.url + id)
+    .pipe(map((res:Response)=>res.json()))
   }
 
   //Create one Experience

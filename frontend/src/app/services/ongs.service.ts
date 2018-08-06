@@ -22,11 +22,12 @@ export class OngsService {
   //Get one ONG
   getOneOng(id){
     return this.http.get(this.url + id)
+    .pipe(map((res:Response)=>res.json())) 
   }
 
   //Create one ONG
   createOng(obj){
-    return this.http.post(this.url, obj)
+    return this.http.post("http://localhost:3000/search", obj)
     .pipe(map((res: Response)=>res.json()))                                                             
   }    
     

@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators'
 })
 export class EventsService {
   url = "http://localhost:3000/event/"
+  id = ''
 
   constructor(
     private http: Http,
@@ -21,11 +22,12 @@ export class EventsService {
   //Get one Event
   getOneEvent(id){
     return this.http.get(this.url + id)
+    .pipe(map((res:Response)=>res.json()))
   }
 
   //Create one Event
-  createEvent(obj){
-    return this.http.post(this.url, obj)
+  createEvent(obj, id){
+    return this.http.post(this.url + id, obj)
     .pipe(map((res: Response)=>res.json()))                                                             
   }    
     

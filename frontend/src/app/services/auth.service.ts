@@ -16,12 +16,12 @@ export class AuthService {
 
   signup(auth): Observable<string>{
     return this.http.post(this.url + 'signup', auth)
-    .pipe(map(res=>res.json()))
+    .pipe(map((res:Response)=>res.json()))
   }
 
   login(auth): Observable<string>{
-    return this.http.post(this.url + 'login', auth,)
-    .pipe(map(res=>res.json()))
+    return this.http.post(this.url + 'login', auth, {withCredentials:true})
+    .pipe(map((res:Response)=>res.json()))
   }
 
   logout(){

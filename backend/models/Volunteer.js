@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const volunteerSchema = new Schema({
+    facebookId:String,
     username: {
         type: String,
         required:true

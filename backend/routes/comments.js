@@ -1,45 +1,26 @@
 const router = require ('express').Router();
 const Coomment = require ('../models/Comment');
 const Eevent = require ('../models/Event');
-const Post = require ('../models/Event');
-const validate = require('../helpers/validations');
 
 //Post new Comment at Event
-router.post('/event/:id', validate.isAuth, (req,res)=>{
-    Coomment.create(req.body, req.user.id)
-    .then(comments=>{
-        Eevent.findByIdAndUpdate(req.params.id, {$push:{ comments: comments }}, {new: true})
-      .then(event=>{
-        return res.status(201).json(event)
-      })
-      .catch(e=>{
-        return res.status(501).json({e})
-      })
+router.post('/event/:id', (req,res,next)=>{
+  Coomment.create(req.body)
+  .then(comments=>{
+    return Eevent.findByIdAndUpdate(req.params.id, {$push:{ comments: comments }}, {new: true})
+    .then(event=>{
+      return res.status(201).json(event)
     })
-    .catch(()=>{
-      next()
+    .catch(e=>{
+      return res.status(501).json({e})
     })
-})
-
-//Post new Comment at Post
-router.post('/post/:id', validate.isAuth, (req,res)=>{
-    Coomment.create(req.body, req.user.id)
-    .then(comments=>{
-        Post.findByIdAndUpdate(req.params.id, {$push:{ comments: comments }}, {new: true})
-      .then(post=>{
-        return res.status(201).json(post)
-      })
-      .catch(e=>{
-        return res.status(501).json({e})
-      })
-    })
-    .catch(()=>{
-      next()
-    })
+  })
+  .catch(()=>{
+    next()
+  })
 })
 
 //Get Comments
-router.get('/', validate.isAuth, (req,res)=>{
+router.get('/comment', (req,res)=>{
   Coomment.find()
   .then(comments =>{
     return res.status(202).json(comments);
@@ -50,7 +31,7 @@ router.get('/', validate.isAuth, (req,res)=>{
 })
 
 //Get one Comment
-router.get('/:id', validate.isAuth, (req,res)=>{
+router.get('/comment/:id', (req,res)=>{
   Coomment.findById(req.params.id)
   .then(comment =>{
     if(!comment) return res.status(404)
@@ -62,7 +43,7 @@ router.get('/:id', validate.isAuth, (req,res)=>{
 })
 
 //Edit a Comment
-router.put('/:id', validate.isAuth, (req,res)=>{
+router.put('/comment/:id', (req,res)=>{
   Coomment.findByIdAndUpdate(req.params.id, req.body, {new:true})
   .then(comment=>{
       return res.status(202).json(comment)
@@ -73,7 +54,7 @@ router.put('/:id', validate.isAuth, (req,res)=>{
 })
 
 //Delete a Comment
-router.delete('/:id', validate.isAuth, (req,res,next)=>{
+router.delete('/comment/:id', (req,res,next)=>{
   Coomment.findByIdAndRemove(req.params.id)
   .then(comment=>{
       return res.status(202).json(comment)

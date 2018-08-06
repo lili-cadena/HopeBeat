@@ -13,7 +13,7 @@ const ongSchema = new Schema({
     causes: [
         {
             type: String,
-            required:true
+            // required:true
         }
     ],
     summary:{
@@ -44,12 +44,6 @@ const ongSchema = new Schema({
         {
             type: Schema.Types.ObjectId,
             ref: 'Job',
-        }
-    ],
-    posts:[
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Post'
         }
     ],
     followers:[

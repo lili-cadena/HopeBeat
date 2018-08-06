@@ -8,9 +8,12 @@ const eventSchema = new Schema({
     },
     startDate: {
         type: Date,
-        required:true
+        default: Date.now
     },
-    finalDate: Date,
+    finalDate: {
+        type: Date,
+        default: Date.now
+    },
     startHour: {
         type: Number,
         required:true

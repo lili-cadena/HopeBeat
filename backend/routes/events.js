@@ -1,27 +1,26 @@
 const router = require ('express').Router();
 const Eevent = require ('../models/Event');
 const ONG = require ('../models/ONG');
-const validate = require('../helpers/validations');
 
 //Post new Event
-router.post('/:id', validate.isAuth, (req,res)=>{
-    Eevent.create(req.body)
-    .then(events=>{
-      ONG.findByIdAndUpdate(req.params.id, {$push:{ events: events }}, {new: true})
-      .then(ong=>{
-        return res.status(201).json(ong)
-      })
-      .catch(e=>{
-        return res.status(501).json({e})
-      })
+router.post('/ong/:id', (req,res,next)=>{
+  Eevent.create(req.body)
+  .then(events=>{
+    return ONG.findByIdAndUpdate(req.params.id, {$push:{ events: events }}, {new: true})
+    .then(ong=>{
+      return res.status(201).json(ong)
     })
-    .catch(()=>{
-      next()
+    .catch(e=>{
+      return res.status(501).json({e})
     })
+  })
+  .catch(()=>{
+    next()
+  })
 })
 
 //Get Events
-router.get('/', validate.isAuth, (req,res)=>{
+router.get('/event', (req,res)=>{
   Eevent.find()
   .then(events =>{
     return res.status(202).json(events);
@@ -31,8 +30,8 @@ router.get('/', validate.isAuth, (req,res)=>{
   })
 })
 
-//Get one Experience
-router.get('/:id', validate.isAuth,(req,res)=>{
+//Get one Event
+router.get('/event/:id', (req,res)=>{
   Eevent.findById(req.params.id)
   .then(event =>{
     if(!event) return res.status(404)
@@ -43,8 +42,8 @@ router.get('/:id', validate.isAuth,(req,res)=>{
   })
 })
 
-//Edit a Experience
-router.put('/:id', validate.isAuth, (req,res)=>{
+//Edit a Event
+router.put('/event/:id', (req,res)=>{
   Eevent.findByIdAndUpdate(req.params.id, req.body, {new:true})
   .then(event=>{
       return res.status(202).json(event)
@@ -54,8 +53,8 @@ router.put('/:id', validate.isAuth, (req,res)=>{
   })
 })
 
-//Delete a Experience
-router.delete('/:id', validate.isAuth, (req,res,next)=>{
+//Delete a Event
+router.delete('/event/:id', (req,res,next)=>{
   Eevent.findByIdAndRemove(req.params.id)
   .then(event=>{
       return res.status(202).json(event)

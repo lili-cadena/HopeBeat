@@ -1,13 +1,12 @@
 const router = require ('express').Router();
 const ONG = require ('../models/ONG');
 const Volunteer = require ('../models/Volunteer');
-const validate = require('../helpers/validations');
 
 //Post new ONG
-router.post('/ong', (req,res)=>{
+router.post('/search', (req,res,next)=>{
   ONG.create(req.body)
   .then(ong=>{
-    Volunteer.findByIdAndUpdate(req.user.id, {$push:{ ongs: ong }}, {new: true})
+    return Volunteer.findByIdAndUpdate(req.user.id, {$push:{ ongs: ong }}, {new: true})
     .then(volunteer=>{
       return res.status(202).json(volunteer)
     })

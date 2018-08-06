@@ -73,13 +73,12 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 
 const auth = require('./routes/auth');
-const comments = require('./routes/ongs');
-const events = require('./routes/ongs');
-const experiences = require('./routes/ongs');
+const comments = require('./routes/comments');
+const events = require('./routes/events');
+const experiences = require('./routes/experiences');
 const index = require('./routes/index');
-const jobs = require('./routes/ongs');
+const jobs = require('./routes/jobs');
 const ongs = require('./routes/ongs');
-const posts = require('./routes/ongs');
 
 
 app.use('/', auth);
@@ -88,7 +87,6 @@ app.use('/', events);
 app.use('/', experiences);
 app.use('/', jobs);
 app.use('/', ongs);
-app.use('/', posts);
 app.use('/', index);
 
 

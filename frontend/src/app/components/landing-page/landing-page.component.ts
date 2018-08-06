@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { FirebaseService } from '../../services/firebase.service';
+
 
 @Component({
   selector: 'app-landing-page',
@@ -15,7 +17,13 @@ export class LandingPageComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
+    private firebaseService: FirebaseService
   ) { }
+
+  authWithFacebook(){
+    this.firebaseService.loginWithFacebook()
+    this.router.navigate(['search']);
+  }
 
   signup(){
     this.authService.signup(this.auth)

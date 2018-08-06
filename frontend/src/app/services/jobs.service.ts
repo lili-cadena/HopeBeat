@@ -22,6 +22,7 @@ export class JobsService {
   //Get one Job
   getOneJob(id){
     return this.http.get(this.url + id)
+    .pipe(map((res:Response)=>res.json()))
   }
 
   //Create one Job

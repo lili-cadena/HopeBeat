@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { OngsService } from '../../services/ongs.service';
+import { ExperiencesService } from '../../services/experiences.service';
 
 @Component({
   selector: 'app-volunteer-profile',
@@ -8,24 +7,17 @@ import { OngsService } from '../../services/ongs.service';
   styleUrls: ['./volunteer-profile.component.css']
 })
 export class VolunteerProfileComponent implements OnInit {
-  ong= {}
-  id= ''
+  experiences= {}
   
   constructor(
-    private activeRoute: ActivatedRoute,
-    private ongService: OngsService,
+    private experiencesService: ExperiencesService,
 
   ) { }
 
   ngOnInit() {
-    this.activeRoute.params
-    .subscribe(params=>{
-      this.id = params.id
-
-      this.ongService.getOneOng(this.id)
-      .subscribe(ong=>{
-        this.ong = ong
-      })
+    this.experiencesService.getAllExperiences()
+    .subscribe(experiences=>{
+      this.experiences = experiences
     })
   }
 

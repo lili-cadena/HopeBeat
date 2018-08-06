@@ -22,6 +22,8 @@ import { EventsService} from './services/events.service';
 import { JobsService } from './services/jobs.service';
 import { ExperiencesService } from './services/experiences.service';
 import { OngsService } from './services/ongs.service';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { FirebaseService } from './services/firebase.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { OngsService } from './services/ongs.service';
     EventComponent,
     JobComponent,
     VolunteerProfileComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,7 @@ import { OngsService } from './services/ongs.service';
     JobsService,
     ExperiencesService,
     OngsService,
+    FirebaseService,
   ],
   bootstrap: [AppComponent]
 })
