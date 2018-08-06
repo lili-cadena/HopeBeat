@@ -11,6 +11,8 @@ export class JobComponent implements OnInit {
   
   job: any = {}
   id = ''
+  applicants
+  user = JSON.parse(localStorage.getItem('user'))
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -25,10 +27,23 @@ export class JobComponent implements OnInit {
       this.jobsService.getOneJob(this.id)
       .subscribe(job=>{
         this.job = job
-        console.log(job)
       })
 
     })
   }
 
+  apply(){
+    const user = JSON.parse(localStorage.getItem('user'))
+
+    this.activeRoute.params
+    .subscribe(params=>{
+      this.id = params.id
+
+      this.jobsService.editOneJob(this.id, {applicants : user})
+      .subscribe(job=>{
+        this.job = job
+        console.log(job)
+      })
+    })
+  }
 }

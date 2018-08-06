@@ -22,6 +22,7 @@ router.post('/ong/:id', (req,res,next)=>{
 //Get Jobs
 router.get('/job', (req,res)=>{
   Job.find()
+  .populate("ong")
   .then(jobs =>{
     return res.status(202).json(jobs);
   })
@@ -33,6 +34,7 @@ router.get('/job', (req,res)=>{
 //Get one Job
 router.get('/job/:id', (req,res)=>{
   Job.findById(req.params.id)
+  .populate("ong")
   .then(job=>{
     if(!job) return res.status(404)
       return res.status(202).json(job);
@@ -45,6 +47,7 @@ router.get('/job/:id', (req,res)=>{
 //Edit a Job
 router.put('/job/:id', (req,res)=>{
   Job.findByIdAndUpdate(req.params.id, req.body, {new:true})
+  .populate("ong")
   .then(job=>{
       return res.status(202).json(job)
   })
@@ -56,6 +59,7 @@ router.put('/job/:id', (req,res)=>{
 //Delete a Job
 router.delete('/job/:id', (req,res,next)=>{
   Job.findByIdAndRemove(req.params.id)
+  .populate("ong")
   .then(job=>{
       return res.status(202).json(job)
   })

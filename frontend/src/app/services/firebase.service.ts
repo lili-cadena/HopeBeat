@@ -17,16 +17,23 @@ firebase.initializeApp(config);
 })
 export class FirebaseService {
 
-  url = 'http://localhost:3000/'
+  url = '/'
 
   constructor() { }
+
+  cred: any = {}
 
   provider = new firebase.auth.FacebookAuthProvider()
 
   loginWithFacebook(){
     firebase.auth().signInWithPopup(this.provider)
     .then(snap=>{
-      localStorage.setItem('facebookToken', JSON.stringify(snap.credential.accessToken))
+      
+      this.cred = snap.credential
+      let token = this.cred.accessToken
+      
+      console.log(this.cred)
+      localStorage.setItem('facebookToken', JSON.stringify(token))
       localStorage.setItem('user', JSON.stringify(snap.user))
       this._sendTokenToBackend(snap)
     })

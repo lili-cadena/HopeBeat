@@ -34,6 +34,10 @@ const eventSchema = new Schema({
         type: String,
         default: ''
     },
+    ong:{
+        type: Schema.Types.ObjectId,
+        ref: 'ONG',
+    },
     attendees:[
         {
             type: Schema.Types.ObjectId,

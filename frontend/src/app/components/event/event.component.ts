@@ -57,4 +57,19 @@ export class EventComponent implements OnInit {
     })
   }
 
+  attend(){
+    const user = JSON.parse(localStorage.getItem('user'))
+
+    this.activeRoute.params
+    .subscribe(params=>{
+      this.id = params.id
+
+      this.eventsService.editOneEvent(this.id, {attendees : user})
+      .subscribe(event=>{
+        this.event = event
+        console.log(event)
+      })
+    })
+  }
+
 }

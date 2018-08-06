@@ -15,7 +15,7 @@ export const routes: Routes = [
     {path:'home', component: LandingPageComponent},
     {path:'search', component: SearchComponent},
     {path:'ong/:id', component: NgoProfileComponent},
-    {path:'username', component: VolunteerProfileComponent},
-    {path:'event', component: EventComponent},
-    {path:'job', component: JobComponent},
+    {path:'volunteer/:id', component: VolunteerProfileComponent},
+    {path:'event/:id', component: EventComponent},
+    {path:'job/:id', component: JobComponent},
 ];

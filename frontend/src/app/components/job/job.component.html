@@ -5,7 +5,7 @@
         <div class="uk-child-width-1-2@m" uk-grid>
             <div>
                 <div class="uk-card">
-                    <h3 class="uk-card-title">Community Manager</h3>
+                    <h3 class="uk-card-title">{{job.position}}</h3>
                     <ul class="uk-nav">     
                         <li>
                             <a class="uk-link-muted" href="#">
@@ -20,7 +20,7 @@
                 <div class="uk-card">
                     <div class="uk-child-width-expand@s uk-text-center" uk-grid>
                         <div>
-                            <button class="uk-button uk-button-primary uk-button-large uk-width-medium">Apply</button>
+                            <button class="uk-button uk-button-primary uk-button-large uk-width-medium" (click)="apply()">Apply</button>
                         </div>
                     </div>
                 </div>
@@ -36,17 +36,17 @@
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-body">
                         <h3 class="uk-card-title">Description</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                        <p>{{job.description}}</p>
                         <h3 class="uk-card-title">Requests</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                        <p>{{job.requests}}</p>
                     </div>
                 </div>
             </div>
             <div>
                 <div class="uk-card uk-card-default">
                     <div class="uk-card-body">                        
-                        <p><span class="uk-margin-small-right" uk-icon="icon: clock; ratio: 1.5"></span> Weekly required hours: 4</p>
-                        <p><span class="uk-margin-small-right" uk-icon="icon: location; ratio: 1.5"></span> Location</p>
+                        <p><span class="uk-margin-small-right" uk-icon="icon: clock; ratio: 1.5"></span> Weekly required hours: {{job.weeklyRequiredHours}}</p>
+                        <p><span class="uk-margin-small-right" uk-icon="icon: location; ratio: 1.5"></span>Location: {{job.location}}</p>
                     </div>
                 </div>
             </div>

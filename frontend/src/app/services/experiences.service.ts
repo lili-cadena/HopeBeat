@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators'
 })
 export class ExperiencesService {
 
-  url = "http://localhost:3000/experience/"
+  url = "/experience/"
 
   constructor(
     private http: Http,

@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators'
   providedIn: 'root'
 })
 export class OngsService {
-  url = "http://localhost:3000/ong/"
+  url = "/ong/"
 
   constructor(
     private http: Http,
@@ -27,13 +27,13 @@ export class OngsService {
 
   //Create one ONG
   createOng(obj){
-    return this.http.post("http://localhost:3000/search", obj)
+    return this.http.post("/search", obj)
     .pipe(map((res: Response)=>res.json()))                                                             
   }    
     
   //Edit a ONG
-  editOneOng(obj){
-    return this.http.put(this.url + obj._id, obj) 
+  editOneOng(id, obj){
+    return this.http.put(this.url + id, obj) 
     .pipe(map((res: Response)=>res.json()))    
   }    
 
@@ -42,6 +42,6 @@ export class OngsService {
     return this.http.delete(this.url + id)
     .pipe(map((res: Response)=>res.json()))                                                                
   }
- 
+
 
 }

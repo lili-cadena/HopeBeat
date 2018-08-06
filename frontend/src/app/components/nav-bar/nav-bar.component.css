@@ -1,3 +1,9 @@
 .uk-navbar-container{
     background-color: #491b4c;
 }
+a{
+    color:#65686d;
+}
+a:hover{
+    color:black;
+}

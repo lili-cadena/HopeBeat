@@ -32,7 +32,7 @@ const ongSchema = new Schema({
         type: String,
         default: ''
     },
-    telephones:[Number],
+    telephone:Number,
     webSite:String,
     events:[
         {

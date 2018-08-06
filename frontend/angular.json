@@ -89,7 +89,9 @@
               "src/tsconfig.spec.json"
             ],
             "exclude": [
+              "src/app/services/**",
               "**/node_modules/**"
+              
             ]
           }
         }

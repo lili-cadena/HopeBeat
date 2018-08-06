@@ -13,6 +13,7 @@ export class SearchComponent implements OnInit {
   ongs: Array<any>
   events: Array<any>
   jobs: Array<any>
+  jobOngOwner = {}
 
   constructor(
     private ongsService: OngsService,
@@ -29,11 +30,15 @@ export class SearchComponent implements OnInit {
     this.eventsService.getAllEvents()
     .subscribe(events=>{
       this.events = events
+      // this.eventOngOwner = events.ong
+      console.log(this.events)
     })
 
     this.jobsService.getAllJobs()
     .subscribe(jobs=>{
       this.jobs = jobs
+      // this.jobOngOwner = jobs.ong
+      console.log(this.jobs)
     })
   }
 

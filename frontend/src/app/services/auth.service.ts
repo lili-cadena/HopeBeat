@@ -27,5 +27,10 @@ export class AuthService {
   logout(){
     localStorage.removeItem('user')
   }
+
+  editVolunteerProfile(id, obj){
+    return this.http.put("/ong/" + id, obj) 
+    .pipe(map((res: Response)=>res.json()))    
+  }   
   
 }

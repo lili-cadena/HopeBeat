@@ -22,6 +22,7 @@ router.post('/ong/:id', (req,res,next)=>{
 //Get Events
 router.get('/event', (req,res)=>{
   Eevent.find()
+  .populate("ong")
   .then(events =>{
     return res.status(202).json(events);
   })
@@ -33,6 +34,7 @@ router.get('/event', (req,res)=>{
 //Get one Event
 router.get('/event/:id', (req,res)=>{
   Eevent.findById(req.params.id)
+  .populate("ong")
   .then(event =>{
     if(!event) return res.status(404)
       return res.status(202).json(event);
@@ -45,6 +47,7 @@ router.get('/event/:id', (req,res)=>{
 //Edit a Event
 router.put('/event/:id', (req,res)=>{
   Eevent.findByIdAndUpdate(req.params.id, req.body, {new:true})
+  .populate("ong")
   .then(event=>{
       return res.status(202).json(event)
   })
@@ -56,6 +59,7 @@ router.put('/event/:id', (req,res)=>{
 //Delete a Event
 router.delete('/event/:id', (req,res,next)=>{
   Eevent.findByIdAndRemove(req.params.id)
+  .populate("ong")
   .then(event=>{
       return res.status(202).json(event)
   })

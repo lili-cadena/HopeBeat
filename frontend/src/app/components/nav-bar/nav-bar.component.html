@@ -1,3 +1,4 @@
+
 <div class="allNav">
   <div class="navBar">
       <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
@@ -7,8 +8,10 @@
                   <a class="uk-navbar-item uk-logo" href="search"><img src="https://res.cloudinary.com/dzt4wkac0/image/upload/v1533233202/LogoHBSmall3.png" alt="HBlogo"></a>
                   <div class="uk-navbar-item">
                       <form action="javascript:void(0)">
-                          <input class="uk-input uk-form-width-large" type="text" placeholder="Input">
-                          <button class="uk-button uk-button-default uk-light">Search</button>
+                          <input class="uk-input uk-form-width-large" [(ngModel)]="search" name="search" type="text" placeholder="Search your cause">
+                            <!-- <div *ngFor="let ngo of ngos | filter:'name':search">
+                                <a  href="/ong/{{ngo._id}}">{{ngo.name}}</a>
+                            </div> -->
                       </form>
                   </div>
               </div>
@@ -19,25 +22,27 @@
                       <a class="uk-navbar-item" href="search">Home</a>
                   </li>
                   <li>
-                      <a class="uk-navbar-item" href="username">
-                          <img class="uk-border-circle" src="https://scontent.fmex6-1.fna.fbcdn.net/v/t1.0-9/23843343_10155316645486731_4760985230253273152_n.jpg?_nc_cat=0&oh=83154aa9390bf1b65a16ba9e974fc81a&oe=5BD14952" width="40" height="40" alt="photoURL">
+                      <a class="uk-navbar-item" href="volunteer/{{user._id}}">
+                          <img class="uk-border-circle" src="{{user.photoURL}}" width="40" height="40" alt="photoURL">
                       </a>
                   </li>
                   <li>
-                      <a class="uk-navbar-item" href="username">Lili Cadena</a>
+                      <a class="uk-navbar-item" href="volunteer/{{user._id}}">{{user.username}}</a>
                   </li>
                   <li>
                   <span class="uk-navbar-item" uk-icon="icon: plus"></span>
                   <div class="uk-navbar-dropdown">
-                      <ul class="uk-nav uk-navbar-dropdown-nav">     
-                          <li class="uk-active"><a href="#new-ong" uk-toggle><span uk-icon="icon: plus"></span> Add new NGO</a></li>
-                          <li>
-                              <a href="ngo-name">
-                              <img src="https://botw-pd.s3.amazonaws.com/styles/logo-thumbnail/s3/0020/8510/brand.gif?itok=EUd2bI_M" width="20" height="20">
-                                  Soñar Despierto
-                              </a>
-                          </li>
-                      </ul>
+                      <ul class="uk-nav uk-navbar-dropdown-nav uk-form-width-large">     
+                        <li  class="uk-active"><a href="#new-ong" uk-toggle><span uk-icon="icon: plus"></span> Add new NGO</a></li>
+                        <div *ngFor="let ong of ongs">
+                            <li>
+                                <a href="ong/{{ong._id}}">
+                                <img src="{{ong.photoURL}}" width="20" height="20">
+                                    {{ong.name}}
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
                   </div>
                   <li>
                       <a class="uk-navbar-item" (click)="logout()">Log out</a>
@@ -55,35 +60,35 @@
               <h2 class="uk-modal-title">Register a NGO</h2>
           </div>
           <div class="uk-modal-body" uk-overflow-auto>
-              <form>
+              <form validated>
                   <div class="uk-margin">
                       <div class="uk-inline">
                           <span class="uk-form-icon" uk-icon="icon: user"></span>
-                          <input class="uk-input" type="text" placeholder="Name">
+                          <input class="uk-input" type="text" placeholder="Name" [(ngModel)]="name" name="name" required>
                       </div>
                   </div>
                   <div class="uk-margin">
                       <div class="uk-inline">
                           <span class="uk-form-icon" uk-icon="icon: pencil"></span>
-                          <input class="uk-input" type="text" placeholder="What you do?">
+                          <input class="uk-input" type="text" placeholder="What you do?" [(ngModel)]="summary" name="summary" required>
                       </div>
                   </div>
                   <div class="uk-margin">
                       <div class="uk-inline">
                           <span class="uk-form-icon" uk-icon="icon: location"></span>
-                          <input class="uk-input" type="text" placeholder="Location">
+                          <input class="uk-input" type="text" placeholder="Location" [(ngModel)]="location" name="location" required>
                       </div>
                   </div>
                   <div class="uk-margin">
                       <div class="uk-inline">
                           <span class="uk-form-icon" uk-icon="icon: receiver"></span>
-                          <input class="uk-input" type="number" placeholder="Telephone">
+                          <input class="uk-input" type="number" placeholder="Telephone" [(ngModel)]="telephone" name="telephone">
                       </div>
                   </div>
                   <div class="uk-margin">
                       <div class="uk-inline">
                           <span class="uk-form-icon" uk-icon="icon: link"></span>
-                          <input class="uk-input" type="text" placeholder="Website">
+                          <input class="uk-input" type="text" placeholder="Website" [(ngModel)]="webSite" name="webSite" >
                       </div>
                   </div>
                   <div class="uk-margin" uk-margin>
@@ -93,7 +98,7 @@
                       </div>
                       <button class="uk-button uk-button-default">Submit</button>
                   </div>
-                  <p class="uk-text-bold">Your NGO principal causes:</p>
+                  <!-- <p class="uk-text-bold">Your NGO principal causes:</p>
                   <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
                       <label><input class="uk-checkbox" type="checkbox"> Poverty</label>
                       <label><input class="uk-checkbox" type="checkbox"> Human Rights</label>
@@ -101,12 +106,12 @@
                       <label><input class="uk-checkbox" type="checkbox"> Education</label>
                       <label><input class="uk-checkbox" type="checkbox"> Climate Change</label>
                       <label><input class="uk-checkbox" type="checkbox"> Animals</label>
-                  </div>
+                  </div> -->
               </form>
           </div>
           <div class="uk-modal-footer uk-text-right">
               <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-              <button class="uk-button uk-button-primary" type="button" (click)="createONG()">Submit</button>
+              <button class="uk-button uk-button-primary uk-modal-close" type="button" (click)="createONG()">Submit</button>
           </div>
       </div>
   </div>

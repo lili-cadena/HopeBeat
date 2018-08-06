@@ -33,6 +33,8 @@ router.get('/ong', (req,res)=>{
 //Get one ONG
 router.get('/ong/:id', (req,res)=>{
   ONG.findById(req.params.id)
+  .populate('events')
+  .populate('jobs')
   .then(ong=>{
     if(!ong) return res.status(404)
       return res.status(202).json(ong);

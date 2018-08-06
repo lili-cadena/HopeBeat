@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OngsService } from '../../services/ongs.service';
 import { EventsService } from '../../services/events.service';
 import { JobsService } from '../../services/jobs.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-ngo-profile',
@@ -10,17 +11,32 @@ import { JobsService } from '../../services/jobs.service';
   styleUrls: ['./ngo-profile.component.css']
 })
 export class NgoProfileComponent implements OnInit {
-  ong: any = {}
+  ong: any = []
+  o: any = {}
   event: any = {}
   job: any = {}
-  id = ''
-
+  id: any = ''
+  jobs: any = []
+  events: any = []
+  title: any
+  startDate: any
+  finalDate: any
+  startHour: any
+  finalHour: any
+  location: any
+  description: any
+  photo: any
+  position: any
+  weeklyRequiredHours: any
+  requests: any
+  
   constructor(
     private activeRoute: ActivatedRoute,
     private ongsService: OngsService,
     private eventService: EventsService,
     private jobService: JobsService,
     private router: Router,
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
@@ -31,18 +47,34 @@ export class NgoProfileComponent implements OnInit {
       this.ongsService.getOneOng(this.id)
       .subscribe(ong=>{
         this.ong = ong
-        console.log(ong)
+        this.jobs = ong.jobs
+        this.events = ong.events
       })
     })
   }
 
-  //ONG Settings
-  editOng(){
-    this.ongsService.editOneOng(this.ong)
-    .subscribe(()=>{
-      this.router.navigate(['ong/' + this.ong._id])
+  //Follow
+  follow(){
+    const user = JSON.parse(localStorage.getItem('user'))
+
+    this.activeRoute.params
+    .subscribe(params=>{
+      this.id = params.id
+
+      this.ongsService.editOneOng(this.id, {followers : user})
+      .subscribe(o=>{
+        this.o = o
+      })
+
+      this.authService.editVolunteerProfile(this.id, {following : this.o.id})
+      .subscribe(user=>{
+        user = user
+        localStorage.setItem('user', JSON.stringify(user))
+      })
     })
   }
+
+  // ONG Settings
 
   deleteOng(){
     if(!window.confirm('Are you sure?')) return
@@ -58,18 +90,10 @@ export class NgoProfileComponent implements OnInit {
     .subscribe(params=>{
       this.id = params.id
       
-      this.eventService.createEvent(this.event, this.id)
+      this.eventService.createEvent(this.id, this.event)
       .subscribe(event=>{
         this.event = event
-        console.log(event)
       })
-    })
-  }
-
-  editEvent(){
-    this.eventService.editOneEvent(this.event)
-    .subscribe(()=>{
-      this.router.navigate(['ong/' + this.ong._id])
     })
   }
   
@@ -83,17 +107,14 @@ export class NgoProfileComponent implements OnInit {
 
   //Job Settings
   createJob(){
-    this.jobService.createJob(this.job)
-    .subscribe(job=>{
-      this.job = job
-      console.log(job)
-    })
-  }
-
-  editJob(){
-    this.jobService.editOneJob(this.job)
-    .subscribe(()=>{
-      this.router.navigate(['ong/' + this.ong._id])
+    this.activeRoute.params
+    .subscribe(params=>{
+      this.id = params.id
+      
+      this.jobService.createJob(this.id, this.job)
+      .subscribe(job=>{
+        this.job = job
+      })
     })
   }
 

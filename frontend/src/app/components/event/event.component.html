@@ -5,7 +5,7 @@
         <div class="uk-child-width-1-2@m" uk-grid>
             <div>
                 <div class="uk-card">
-                    <h3 class="uk-card-title">Vico valores: Workshop for children</h3>
+                    <h3 class="uk-card-title">{{event.title}}</h3>
                     <p>Saturday, August 11th 2018</p>
                     <ul class="uk-nav">     
                         <li>
@@ -22,11 +22,11 @@
                     <h3 class="uk-card-title uk-text-center">Will attend?</h3>
                     <div class="uk-child-width-expand@s uk-text-center" uk-grid>
                         <div>
-                            <button class="uk-button uk-button-primary uk-button-large uk-width-medium">Yes</button>
+                            <button class="uk-button uk-button-primary uk-button-large uk-width-medium" (click)="attend()">Yes</button>
                         </div>
-                        <div>
+                        <!-- <div>
                             <button class="uk-button uk-button-primary uk-button-large uk-width-medium">No</button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -46,9 +46,9 @@
                         <h3 class="uk-card-title">Description</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
                     </div>
-                    <div class="uk-card-footer">
+                    <!-- <div class="uk-card-footer">
                         <a href="#" class="uk-button uk-button-text">Comments</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div>
@@ -61,7 +61,7 @@
                         <p>Map</p>
                     </div>
                     <div class="uk-card-media-bottom">
-                        <img src="images/light.jpg" alt="">
+                        <img src="" alt="">
                     </div>
                 </div>
             </div>

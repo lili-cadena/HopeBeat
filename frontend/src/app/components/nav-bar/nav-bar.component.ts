@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OngsService } from '../../services/ongs.service';
+import { JobsService } from '../../services/jobs.service';
+import { EventsService } from '../../services/events.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,17 +11,45 @@ import { OngsService } from '../../services/ongs.service';
 })
 export class NavBarComponent implements OnInit {
   
-  ong = {}
-
-  userOngs = JSON.parse(localStorage.getItem('user.ongs[0]'))
   user = JSON.parse(localStorage.getItem('user'))
+  
+  ongs = {}
+  ngos = {}
+  jobs = {}
+  events = {}
+  ong = {}
+  search: any
+  name: any
+  summary: any
+  location: any
+  telephone: any
+  webSite: any
 
   constructor(
     private router: Router,
     private ongsService: OngsService,
+    private jobsService: JobsService,
+    private eventsService: EventsService,
   ) { }
 
   ngOnInit() {
+    const user = JSON.parse(localStorage.getItem('user'))
+     this.ongs = user.ongs
+
+     this.ongsService.getAllOngs()
+    .subscribe(ngos=>{
+      this.ngos = ngos
+    })
+
+    this.jobsService.getAllJobs()
+    .subscribe(jobs=>{
+      this.jobs = jobs
+    })
+
+    this.eventsService.getAllEvents()
+    .subscribe(events=>{
+      this.events = events
+    })
   }
 
   createONG(){
@@ -28,6 +58,7 @@ export class NavBarComponent implements OnInit {
       this.ong = ong
       console.log(ong)
     })
+    
   }
 
   logout(){

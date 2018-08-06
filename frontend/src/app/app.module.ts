@@ -24,6 +24,7 @@ import { ExperiencesService } from './services/experiences.service';
 import { OngsService } from './services/ongs.service';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FirebaseService } from './services/firebase.service';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { FirebaseService } from './services/firebase.service';
     JobComponent,
     VolunteerProfileComponent,
     NavBarComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

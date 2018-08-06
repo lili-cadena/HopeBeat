@@ -12,8 +12,15 @@ router.get('/logout', (req,res)=>{
 })
 
 router.post('/login', passport.authenticate('local'), (req,res)=>{
-  return res.status(200).json(req.user);
-})
+  Volunteer.findById(req.user.id)
+  .populate('ongs')
+  .then(volunteer => {
+  return res.status(200).json(volunteer);
+  })
+  .catch(e=>{
+  return res.status(401).json(e)
+  })
+  })
 
 router.post('/signup', (req,res)=>{
   Volunteer.register(req.body, req.body.password)
@@ -22,6 +29,17 @@ router.post('/signup', (req,res)=>{
   })
   .catch(e=>{
     return res.status(401).json(e)
+  })
+})
+
+//Edit Volunteer Profile
+router.put('/ong/:id', (req,res)=>{
+  Volunteer.findByIdAndUpdate(req.user.id, req.body, {new:true})
+  .then(volunteer=>{
+      return res.status(202).json(volunteer)
+  })
+  .catch(e=>{
+      return res.status(500).json(e)
   })
 })
 

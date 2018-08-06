@@ -24,10 +24,14 @@ const jobSchema = new Schema({
             required:true
         }
     ],
+    ong:{
+            type: Schema.Types.ObjectId,
+            ref: 'ONG',
+    },
     applicants: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Vounteer'
+            ref: 'Vounteer',
         }
     ]
 },{
