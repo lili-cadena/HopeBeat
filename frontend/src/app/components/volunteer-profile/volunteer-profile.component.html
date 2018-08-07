@@ -1,15 +1,115 @@
 <app-nav-bar></app-nav-bar>
 
+
+
 <div id="userProfile">
 
-  <div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-inline" data-src="https://78.media.tumblr.com/44c44d28a4c505461f1b9fe1e0a7bbba/tumblr_oc9t2rGI5b1vccz9go1_1280.png" uk-img>
+  <div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-inline" data-src="https://static1.squarespace.com/static/53b4d49de4b00894c69c7a0c/t/53f55c34e4b017d3b3110891/1408588852546/Peach+Watercolor+Wallpaper_Pixejoo.jpg" uk-img>
     <span class="uk-position-left uk-position-medium uk-text-lead uk-text-bold" >
-        <img class="uk-border-circle uk-position-medium" src="https://scontent.fmex6-1.fna.fbcdn.net/v/t1.0-9/23843343_10155316645486731_4760985230253273152_n.jpg?_nc_cat=0&oh=83154aa9390bf1b65a16ba9e974fc81a&oe=5BD14952" width="150" height="150">
-        Lili Cadena
+        <img class="uk-border-circle uk-position-medium" src="{{user.photoURL}}" width="150" height="150">
+        {{user.username}}
     </span>
     <div>
         <a class="uk-position-bottom-right uk-position-medium" href="#" uk-icon="icon: pencil"></a>
     </div>
+    <!-- <div>
+        <button class="uk-button uk-button-danger uk-position-bottom-right uk-position-large" type="button" (click)="contact()">Contact</button>
+    </div> -->
   </div>
+
+  <a class="uk-position-medium" href="#add" uk-icon="icon: plus" uk-toggle></a>
+
+      <div class="uk-container uk-container-large">
+          
+          <div class="uk-card uk-card-default">
+              <div class="uk-card-header experience">
+                  <div class="uk-grid-small uk-flex-middle" uk-grid>
+                      <div class="uk-width-auto">
+                      </div>
+                      <div class="uk-width-expand"> 
+                          <h3 class="uk-card-title uk-margin-remove-bottom">
+                              <p class="uk-link-heading" style="color:white">
+                                  Position: {{volunteer.experiences[0].position}}
+                              </p>
+                          </h3>
+                          <p class="uk-text-meta uk-margin-remove-top" style="color: white">{{volunteer.experiences[0].ong}}</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="uk-card-body">
+                <p class="uk-article-meta">From April 2012 to October 2012</p>
+                <p>Description: {{volunteer.experiences[0].description}}</p>
+              </div>
+          </div>
+  </div>
+
+  <div id="add" uk-modal>
+    <div class="uk-modal-dialog">
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+      <div class="uk-modal-header">
+        <h2 class="uk-modal-title">New Experience</h2>
+      </div>
+
+      <div class="uk-modal-body">
+        <ul class="uk-child-width-1-2 uk-child-width-1-3@m uk-text-center" uk-grid>
+          <li data-color="white">
+            <div class="uk-margin-medium uk-form-width-large">
+              <form>
+                <fieldset class="uk-fieldset">
+                  <div class="uk-margin">
+                      <div class="uk-inline">
+                          <span class="uk-form-icon" uk-icon="icon: tag"></span>
+                          <input class="uk-input uk-form-width-medium" type="text" placeholder="Position" [(ngModel)]="experience.position" name="position">
+                      </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline">
+                            <span class="uk-form-icon" uk-icon="icon: clock"></span>
+                            <input class="uk-input uk-form-width-medium" type="text" placeholder="NGO" [(ngModel)]="experience.ong" name="ong">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                      <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: calendar"></span>
+                        <input class="uk-input uk-form-width-medium" type="date" placeholder="Start Day" [(ngModel)]="experience.startDate" name="startDate">
+                      </div>
+                    </div>
+                    <div class="uk-margin">
+                      <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: calendar"></span>
+                        <input class="uk-input uk-form-width-medium" type="date" placeholder="Final Day" [(ngModel)]="experience.finalDate" name="finalDate">
+                      </div>
+                    </div>
+                    <div class="uk-margin">
+                      <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: clock"></span>
+                        <input class="uk-input uk-form-width-medium" type="text" placeholder="Description" [(ngModel)]="experience.description" name="description">
+                      </div>
+                    </div>
+                    <div class="uk-margin" uk-margin>
+                      <div uk-form-custom="target: true">
+                        <input type="file">
+                        <input class="uk-input uk-form-width-medium" type="text" placeholder="Logo" [(ngModel)]="experience.logo" name="logo" disabled>
+                      </div>
+                        <button class="uk-button uk-button-default">Upload</button>
+                      </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline">
+                          <button class="uk-button uk-button-primary uk-modal-close" type="button" (click)="createExperience()">Submit</button>
+                        </div>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+          <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+        </div>
+      </div>
+    
+
 
 </div>

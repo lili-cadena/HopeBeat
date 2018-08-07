@@ -3,7 +3,7 @@ const Job = require ('../models/Job');
 const ONG = require ('../models/ONG');
 
 //Post new Job
-router.post('/ong/:id', (req,res,next)=>{
+router.post('/job/:id', (req,res,next)=>{
   Job.create(req.body)
   .then(job=>{
     return ONG.findByIdAndUpdate(req.params.id, {$push:{ jobs: job }}, {new: true})
@@ -14,15 +14,15 @@ router.post('/ong/:id', (req,res,next)=>{
       return res.status(501).json({e})
     })
   })
-  .catch(()=>{
-    next()
+  .catch(e=>{
+    return res.status(401).json(e)
   })
 })
 
 //Get Jobs
 router.get('/job', (req,res)=>{
   Job.find()
-  .populate("ong")
+  .populate("ong", "applicants")
   .then(jobs =>{
     return res.status(202).json(jobs);
   })

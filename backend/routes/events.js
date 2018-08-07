@@ -3,10 +3,10 @@ const Eevent = require ('../models/Event');
 const ONG = require ('../models/ONG');
 
 //Post new Event
-router.post('/ong/:id', (req,res,next)=>{
+router.post('/event/:id', (req,res,next)=>{
   Eevent.create(req.body)
-  .then(events=>{
-    return ONG.findByIdAndUpdate(req.params.id, {$push:{ events: events }}, {new: true})
+  .then(event=>{
+    return ONG.findByIdAndUpdate(req.params.id, {$push:{ events: event }}, {new: true})
     .then(ong=>{
       return res.status(201).json(ong)
     })
@@ -14,8 +14,8 @@ router.post('/ong/:id', (req,res,next)=>{
       return res.status(501).json({e})
     })
   })
-  .catch(()=>{
-    next()
+  .catch(e=>{
+    return res.status(401).json(e)
   })
 })
 

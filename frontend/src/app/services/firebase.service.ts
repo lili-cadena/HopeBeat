@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase'
+import { Router } from '@angular/router';
 
 var config = {
   apiKey: "AIzaSyDPKzn0a4vC9vMRr5a2ifNcWBHD8Whtaws",
@@ -16,10 +17,13 @@ firebase.initializeApp(config);
   providedIn: 'root'
 })
 export class FirebaseService {
+  
+  url = 'http://localhost:3000/'
+  // url = '/'
 
-  url = '/'
-
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   cred: any = {}
 
@@ -29,15 +33,17 @@ export class FirebaseService {
     firebase.auth().signInWithPopup(this.provider)
     .then(snap=>{
       
+      console.log(this.provider)
+
       this.cred = snap.credential
       let token = this.cred.accessToken
       
-      console.log(this.cred)
       localStorage.setItem('facebookToken', JSON.stringify(token))
-      localStorage.setItem('user', JSON.stringify(snap.user))
+      
       this._sendTokenToBackend(snap)
     })
   }
+  
 
   _sendTokenToBackend(snap){
     const token = snap.credential.accessToken
@@ -52,7 +58,7 @@ export class FirebaseService {
       return r.json()
     })
     .then(res=>{
-      console.log(res)
+      localStorage.setItem('user', JSON.stringify(res))
     }) 
   }
 

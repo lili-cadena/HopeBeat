@@ -11,24 +11,20 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./ngo-profile.component.css']
 })
 export class NgoProfileComponent implements OnInit {
-  ong: any = []
+  ong: any = {}
   o: any = {}
   event: any = {}
   job: any = {}
   id: any = ''
-  jobs: any = []
-  events: any = []
-  title: any
-  startDate: any
-  finalDate: any
-  startHour: any
-  finalHour: any
-  location: any
-  description: any
-  photo: any
-  position: any
-  weeklyRequiredHours: any
-  requests: any
+  jobs: any = {}
+  events: any = {}
+
+  title: any = ''
+  location: any = ''
+  description: any = ''
+  summary: any = ''
+  requests: any = ''
+  photo: any = ''
   
   constructor(
     private activeRoute: ActivatedRoute,
@@ -52,6 +48,21 @@ export class NgoProfileComponent implements OnInit {
       })
     })
   }
+
+  //Edit ONG
+
+  editProfile(){
+    this.activeRoute.params
+    .subscribe(params=>{
+      this.id = params.id
+
+      this.ongsService.editOneOng(this.id, this.ong)
+      .subscribe(ong=>{
+        this.ong = ong
+      })
+    })
+  }
+  
 
   //Follow
   follow(){

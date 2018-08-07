@@ -2,13 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const experienceSchema = new Schema({
+    description: String,
     position: {
         type: String,
-        required:true
     },
     ong: {
         type: String,
-        required:true
     },
     logo: {
         type: String,
@@ -16,11 +15,8 @@ const experienceSchema = new Schema({
     },
     startDate: {
         type: Date,
-        required:true
     },
     finalDate: Date,
-    duration: Number,
-    description: String,
 },{
     timestamps:{
         createdAt: 'created_at',

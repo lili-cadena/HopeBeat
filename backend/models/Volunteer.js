@@ -3,6 +3,15 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const volunteerSchema = new Schema({
+    summary: String,
+    poverty: Boolean,
+    humanRigths: Boolean,
+    health: Boolean,
+    education: Boolean,
+    climateChange: Boolean,
+    animals: Boolean,
+    
+    locations: [String],
     facebookId:String,
     username: {
         type: String,
@@ -14,20 +23,12 @@ const volunteerSchema = new Schema({
     },
     photoURL: {
         type: String,
-        default: ''
+        default: 'http://icons.iconarchive.com/icons/graphicloads/colorful-long-shadow/256/Person-icon.png'
     },
     cover: {
         type: String,
-        default: ''
+        default: 'https://images.britcdn.com/wp-content/uploads/2015/06/MakeYOurMark_desktop.jpg?w=1000&auto=format'
     },
-    summary: String,
-    causes: [
-        {
-            type: String,
-            // required:true
-        }
-    ],
-    locations: [String],
     ongs:[
         {
             type: Schema.Types.ObjectId,

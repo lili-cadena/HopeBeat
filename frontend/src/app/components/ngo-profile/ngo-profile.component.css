@@ -1,3 +1,9 @@
-.fondo{
-    position: relative;
+.event{
+    background-color: #e51654;
+}
+.job{
+    background-color: #f4e435;
+}
+.ong{
+    background-color: #86318c;
 }

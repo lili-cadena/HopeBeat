@@ -1,46 +1,39 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http'
+import { Http } from '@angular/http';
 import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
 })
-export class OngsService {
+export class VolunteersService {
 
-  url = 'http://localhost:3000/ong/'
-  // url = '/ong/'
+  url = 'http://localhost:3000/volunteer/'
+  // url = '/volunteer/'
 
   constructor(
     private http: Http,
   ) { }
 
-
-  //Get all ONGs
-  getAllOngs(){
+  //Get all Volunteers
+  getAllVolunteers(){
     return this.http.get(this.url)
     .pipe(map((res:Response)=>res.json())) 
   }
 
-  //Get one ONG
-  getOneOng(id){
+  //Get one Volunteer
+  getOneVolunteer(id){
     return this.http.get(this.url + id)
     .pipe(map((res:Response)=>res.json())) 
-  }
-
-  //Create one ONG
-  createOng(obj){
-    return this.http.post(this.url, obj, {withCredentials:true})
-    .pipe(map((res: Response)=>res.json()))                                                             
-  }    
+  }   
     
-  //Edit a ONG
-  editOneOng(id, obj){
+  //Edit a Volunteer
+  editOneVolunteer(id, obj){
     return this.http.put(this.url + id, obj) 
     .pipe(map((res: Response)=>res.json()))    
   }    
 
-  //delete a ONG
-  deleteOng(id){
+  //Delete a Volunteer
+  deleteVolunteer(id){
     return this.http.delete(this.url + id)
     .pipe(map((res: Response)=>res.json()))                                                                
   }

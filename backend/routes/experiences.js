@@ -3,10 +3,10 @@ const Experience = require ('../models/Experience');
 const Volunteer = require ('../models/Volunteer');
 
 //Post new Experience
-router.post('/experience', (req,res,next)=>{
+router.post('/experience/:id', (req,res,next)=>{
   Experience.create(req.body)
-  .then(experiences=>{
-    return Volunteer.findByIdAndUpdate(req.user.id, {$push:{ experiences: experiences }}, {new: true})
+  .then(experience=>{
+    return Volunteer.findByIdAndUpdate(req.params.id, {$push:{ experiences: experience }}, {new: true})
     .then(volunteer=>{
       return res.status(201).json(volunteer)
     })
@@ -14,8 +14,8 @@ router.post('/experience', (req,res,next)=>{
       return res.status(501).json({e})
     })
   })
-  .catch(()=>{
-    next()
+  .catch(e=>{
+    return res.status(401).json(e)
   })
 })
 

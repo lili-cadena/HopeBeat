@@ -4,26 +4,19 @@ const Schema = mongoose.Schema;
 const jobSchema = new Schema({
     position: {
         type: String,
-        required:true
     },
     weeklyRequiredHours: {
         type: Number,
-        required:true
     },
     location: {
         type: String,
-        required:true
     },
     description: {
         type: String,
-        required:true
     },
-    requests:[
-        {
-            type: String,
-            required:true
-        }
-    ],
+    requests: {
+        type: String,
+    },
     ong:{
             type: Schema.Types.ObjectId,
             ref: 'ONG',

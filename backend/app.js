@@ -14,7 +14,7 @@ const MongoStore = require("connect-mongo")(session);
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://lili-cadena1:lili-cadena1@ds018558.mlab.com:18558/ironhack-lili', {useMongoClient: true})
+  .connect(process.env.DB, {useMongoClient: true})
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
@@ -26,21 +26,21 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 
 const app = express();
 
-// app.use(require('cors')({
-//   origin: true,
-//   credentials: true
-// }))
+app.use(require('cors')({
+  origin: true,
+  credentials: true
+}))
 
-app.use(session({ 
-  secret: "lili",
-  resave: false,
-  saveUninitialized: true,
-  cookie : { httpOnly: true, maxAge: 2419200000 },
+app.use(session({
   store: new MongoStore({
     mongooseConnection:mongoose.connection,
-    ttl: 30 * 24 * 60 * 60
-  }), 
- }));
+    ttl:24*60*60
+  }),
+  secret: 'lili',
+  saveUninitialized: true,
+  resave: false,
+  cookie : { httpOnly: true, maxAge: 2419200000 },
+}));
 
 // Middleware Setup
 app.use(logger('dev'));
@@ -62,6 +62,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
@@ -79,6 +80,7 @@ const experiences = require('./routes/experiences');
 const index = require('./routes/index');
 const jobs = require('./routes/jobs');
 const ongs = require('./routes/ongs');
+const volunteers = require('./routes/volunteers');
 
 
 app.use('/', auth);
@@ -86,7 +88,8 @@ app.use('/', comments);
 app.use('/', events);
 app.use('/', experiences);
 app.use('/', jobs);
-app.use('/', ongs);
+app.use('/ong', ongs);
+app.use('/', volunteers);
 app.use('/', index);
 
 

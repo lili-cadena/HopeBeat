@@ -11,19 +11,26 @@ import { EventsService } from '../../services/events.service';
 })
 export class NavBarComponent implements OnInit {
   
-  user = JSON.parse(localStorage.getItem('user'))
+  user: any = JSON.parse(localStorage.getItem('user'))
   
-  ongs = {}
-  ngos = {}
-  jobs = {}
-  events = {}
-  ong = {}
+  ongs: any = {}
+  ngos: any = {}
+  jobs: any = {}
+  events: any = {}
+  ong: any = {}
   search: any
-  name: any
-  summary: any
-  location: any
-  telephone: any
-  webSite: any
+  id: any = ''
+  name: any = ''
+  summary: any = ''
+  location: any = ''
+  telephone: any = ''
+  webSite: any = ''
+  poverty: any = ''
+  humanRights: any = ''
+  health: any = ''
+  education: any = ''
+  climateChange: any = ''
+  animals: any = ''
 
   constructor(
     private router: Router,
@@ -56,9 +63,7 @@ export class NavBarComponent implements OnInit {
     this.ongsService.createOng(this.ong)
     .subscribe(ong=>{
       this.ong = ong
-      console.log(ong)
     })
-    
   }
 
   logout(){

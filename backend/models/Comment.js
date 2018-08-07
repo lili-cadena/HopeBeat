@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const commentSchema = new Schema({
     content: {
         type: String,
-        required:true
     },
     volunteer: {
         type: Schema.Types.ObjectId,

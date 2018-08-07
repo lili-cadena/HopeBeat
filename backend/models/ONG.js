@@ -2,35 +2,34 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ongSchema = new Schema({
-    active: {
-        type: Boolean,
-        default: false
+    owner:{
+        type:Schema.Types.ObjectId,
+        ref:"Volunteer"
     },
+    poverty: Boolean,
+    humanRigths: Boolean,
+    health: Boolean,
+    education: Boolean,
+    climateChange: Boolean,
+    animals: Boolean,
+
+    summary: String,
     name: {
         type: String,
-        required:true
     },
-    causes: [
-        {
-            type: String,
-            // required:true
-        }
-    ],
     summary:{
         type: String,
-        required:true
     },
     location:{
         type: String,
-        required:true
     },
     photoURL: {
         type: String,
-        default: ''
+        default: 'http://icons.iconarchive.com/icons/graphicloads/colorful-long-shadow/256/Person-icon.png'
     },
     cover: {
         type: String,
-        default: ''
+        default: 'https://images.britcdn.com/wp-content/uploads/2015/06/MakeYOurMark_desktop.jpg?w=1000&auto=format'
     },
     telephone:Number,
     webSite:String,

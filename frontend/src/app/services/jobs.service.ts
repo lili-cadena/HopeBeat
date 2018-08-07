@@ -7,7 +7,8 @@ import { map } from 'rxjs/operators'
 })
 export class JobsService {
 
-  url = "/job/"
+  url = 'http://localhost:3000/job/'
+  // url = '/job/'
 
   constructor(
     private http: Http,
@@ -27,7 +28,7 @@ export class JobsService {
 
   //Create one Job
   createJob(id, obj){
-    return this.http.post("/ong/" + id, obj)
+    return this.http.post(this.url + id, obj)
     .pipe(map((res: Response)=>res.json()))                                                             
   }    
     

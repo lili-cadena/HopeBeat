@@ -6,7 +6,10 @@ import { map } from 'rxjs/operators'
   providedIn: 'root'
 })
 export class EventsService {
-  url = "/event/"
+
+  url = 'http://localhost:3000/event/'
+  // url = '/event/'
+
   id = ''
 
   constructor(
@@ -27,13 +30,13 @@ export class EventsService {
 
   //Create one Event
   createEvent(id, obj){
-    return this.http.post("/ong/" + id, obj)
+    return this.http.post(this.url + id, obj)
     .pipe(map((res: Response)=>res.json()))                                                             
   }    
     
   //Edit a Event
-  editOneEvent(id, obj){
-    return this.http.put(this.url + id, obj) 
+  editOneEvent(id, obj, x){
+    return this.http.put(this.url + id, obj, x) 
     .pipe(map((res: Response)=>res.json()))    
   }    
 

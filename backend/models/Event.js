@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const eventSchema = new Schema({
     title: {
         type: String,
-        required:true
     },
     startDate: {
         type: Date,
@@ -16,23 +15,22 @@ const eventSchema = new Schema({
     },
     startHour: {
         type: Number,
-        required:true
     },
     finalHour: {
         type: Number,
-        required:true
     },
     location: {
         type: String,
-        required:true
+    },
+    summary: {
+        type: String,
     },
     description: {
         type: String,
-        required:true
     },
     photo: {
         type: String,
-        default: ''
+        default: 'https://www.uccmpolice.com/wp-content/uploads/2017/08/Events-icons.png'
     },
     ong:{
         type: Schema.Types.ObjectId,

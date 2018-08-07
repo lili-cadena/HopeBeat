@@ -12,7 +12,7 @@ export class EventComponent implements OnInit {
 
   event: any = {}
   comment: any = {}
-  id = ''
+  id: any = ''
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -63,8 +63,7 @@ export class EventComponent implements OnInit {
     this.activeRoute.params
     .subscribe(params=>{
       this.id = params.id
-
-      this.eventsService.editOneEvent(this.id, {attendees : user})
+      this.eventsService.editOneEvent(this.id, {$push:{attendees : user}}, {new: true})
       .subscribe(event=>{
         this.event = event
         console.log(event)

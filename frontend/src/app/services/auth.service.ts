@@ -7,9 +7,9 @@ import { Observable } from 'rxjs'
   providedIn: 'root'
 })
 export class AuthService {
-
-  url = "/"
-  // url = "http://localhost:3000/"
+  
+  url = "http://localhost:3000/"
+  // url = '/'
 
   constructor(
     private http: Http,
@@ -29,8 +29,13 @@ export class AuthService {
     localStorage.removeItem('user')
   }
 
+  getOneVolunteer(){
+    return this.http.get(this.url+ 'login')
+    .pipe(map((res:Response)=>res.json())) 
+  }
+
   editVolunteerProfile(id, obj){
-    return this.http.put("/ong/" + id, obj) 
+    return this.http.put(this.url + 'login' + id, obj) 
     .pipe(map((res: Response)=>res.json()))    
   }   
   

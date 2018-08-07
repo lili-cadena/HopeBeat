@@ -16,12 +16,11 @@ passport.use(new FacebookTokenStrategy({
     
     Volunteer.findOne({facebookId:profile.id})
     .then(user=>{
-        console.log(user)
         if(!user) return Volunteer.create({
             username: profile.displayName,
             email: profile.emails[0].value,
             photoURL: profile.photos[0].value,
-            facebookId: profile.id
+            facebookId: profile.id,
         })
         return done(null, user)
     })

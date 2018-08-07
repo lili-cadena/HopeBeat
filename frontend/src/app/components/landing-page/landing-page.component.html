@@ -1,3 +1,14 @@
+<div *ngIf="logError" class="uk-alert-danger uk-margin-remove uk-position-top-center" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    {{logError}}
+</div>
+
+<div *ngIf="signError" class="uk-alert-danger uk-margin-remove uk-position-top-center" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p>{{signError}}</p>
+</div>
+
+
 <div id="home">
     
     <div class="uk-height-viewport uk-background-cover uk-light uk-flex uk-flex-top" style="background-image: url('https://res.cloudinary.com/dzt4wkac0/image/upload/v1533219726/landingBG5.png');">
@@ -63,41 +74,41 @@
     <div class="uk-modal-dialog">
         <button class="uk-modal-close-default" type="button" uk-close></button>
         <div class="uk-modal-header">
-            <h2 class="uk-modal-title">Sing up</h2>
+            <h2 class="uk-modal-title">Sign up</h2>
         </div>
         <div class="uk-modal-body">
-            <form validated>
+            <form>
                 <fieldset class="uk-fieldset">
                     <div class="uk-margin">
                         <div class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: user"></span>
-                            <input class="uk-input uk-form-width-large" type="text" placeholder="User Name" [(ngModel)]="auth.username" name="username" required>
+                            <input class="uk-input uk-form-width-large" type="text" placeholder="User Name" [(ngModel)]="auth.username" name="username">
                         </div>
                     </div>
                     <div class="uk-margin">
                         <div class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: mail"></span>
-                            <input class="uk-input uk-form-width-large" type="email" placeholder="Email" [(ngModel)]="auth.email" name="email" required>
+                            <input class="uk-input uk-form-width-large" type="email" placeholder="Email" [(ngModel)]="auth.email" name="email">
                         </div>
                     </div>
                     <div class="uk-margin">
                         <div class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                            <input class="uk-input uk-form-width-large" type="password" placeholder="Password" [(ngModel)]="auth.password" name="password" #myPassword="ngModel" required>
+                            <input class="uk-input uk-form-width-large" type="password" placeholder="Password" [(ngModel)]="auth.password" name="password" #myPassword="ngModel">
                         </div>
                     </div>
                     <p class="uk-text-bold">Choose 3 causes of your interest:</p>
                     <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                        <label><input class="uk-checkbox" type="checkbox" > Poverty</label>
-                        <label><input class="uk-checkbox" type="checkbox" > Human Rights</label>
-                        <label><input class="uk-checkbox" type="checkbox" > Health</label>
-                        <label><input class="uk-checkbox" type="checkbox" > Education</label>
-                        <label><input class="uk-checkbox" type="checkbox" > Climate Change</label>
-                        <label><input class="uk-checkbox" type="checkbox" > Animals</label>
+                        <label><input class="uk-checkbox" type="checkbox" [(ngModel)]="auth.poverty" name="poverty" value="true"> Poverty</label>
+                        <label><input class="uk-checkbox" type="checkbox" [(ngModel)]="auth.humanRigths" name="humanRigths" value="true"> Human Rights</label>
+                        <label><input class="uk-checkbox" type="checkbox" [(ngModel)]="auth.health" name="health" value="true"> Health</label>
+                        <label><input class="uk-checkbox" type="checkbox" [(ngModel)]="auth.education" name="education" value="true"> Education</label>
+                        <label><input class="uk-checkbox" type="checkbox" [(ngModel)]="auth.climateChange" name="climateChange" value="true"> Climate Change</label>
+                        <label><input class="uk-checkbox" type="checkbox" [(ngModel)]="auth.animals" name="animals" value="true"> Animals</label>
                     </div>
                 </fieldset>
             </form>
-            <button class="uk-button uk-button-primary uk-width-1-2 uk-margin-small-bottom" (click)="authWithFacebook()"><span uk-icon="icon: facebook"></span> Signup with Facebook</button>
+            <button class="uk-button uk-button-primary uk-width-1-2 uk-margin-small-bottom uk-modal-close" (click)="authWithFacebook()"><span uk-icon="icon: facebook"></span> Signup with Facebook</button>
         </div>
         <div class="uk-modal-footer uk-text-right">
             <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
@@ -115,21 +126,21 @@
             <h2 class="uk-modal-title">Login</h2>
         </div>
         <div class="uk-modal-body">
-           <form validated>
+           <form>
                 <div class="uk-margin">
                     <div class="uk-inline">
                         <span class="uk-form-icon" uk-icon="icon: user"></span>
-                        <input class="uk-input uk-form-width-large" type="email" [(ngModel)]="auth.email" name="email"required>
+                        <input class="uk-input uk-form-width-large" type="email" [(ngModel)]="auth.email" name="email">
                     </div>
                 </div>
                 <div class="uk-margin">
                     <div class="uk-inline">
                         <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                        <input class="uk-input uk-form-width-large" type="password" [(ngModel)]="auth.password" name="password" required>
+                        <input class="uk-input uk-form-width-large" type="password" [(ngModel)]="auth.password" name="password">
                     </div>
                 </div>
             </form>
-            <button class="uk-button uk-button-primary uk-width-1-2 uk-margin-small-bottom" (click)="authWithFacebook()"><span uk-icon="icon: facebook"></span> Login with Facebook</button>
+            <button class="uk-button uk-button-primary uk-width-1-2 uk-margin-small-bottom uk-modal-close" (click)="authWithFacebook()"><span uk-icon="icon: facebook"></span> Login with Facebook</button>
         </div>
         <div class="uk-modal-footer uk-text-right">
             <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>

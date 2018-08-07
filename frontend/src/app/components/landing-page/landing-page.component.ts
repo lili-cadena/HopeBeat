@@ -11,9 +11,10 @@ import { FirebaseService } from '../../services/firebase.service';
 })
 export class LandingPageComponent implements OnInit {
   auth: any = {}
-  user = null
-  logError = null
-  element
+  user: any = null
+  signError: any
+  logError: any
+  element: any
 
   constructor(
     private authService: AuthService,
@@ -23,7 +24,7 @@ export class LandingPageComponent implements OnInit {
 
   authWithFacebook(){
     this.firebaseService.loginWithFacebook()
-    this.router.navigate(['search']);
+    this.router.navigate(['search'])
   }
 
   signup(){
@@ -32,6 +33,8 @@ export class LandingPageComponent implements OnInit {
       this.user = user
       localStorage.setItem('user', JSON.stringify(user))
       this.router.navigate(['search']);
+    }, e=>{
+      this.signError = 'Something went wrong, try again please'
     })
   }
 
@@ -41,6 +44,8 @@ export class LandingPageComponent implements OnInit {
       this.user = user
       localStorage.setItem('user', JSON.stringify(user))
       this.router.navigate(['search']);
+    }, e=>{
+      this.logError = 'Something went wrong, try again please'
     })
   }
 

@@ -10,9 +10,9 @@ import { JobsService } from '../../services/jobs.service';
 export class JobComponent implements OnInit {
   
   job: any = {}
-  id = ''
-  applicants
-  user = JSON.parse(localStorage.getItem('user'))
+  id: any = ''
+  applicants: any
+  user: any = JSON.parse(localStorage.getItem('user'))
 
   constructor(
     private activeRoute: ActivatedRoute,

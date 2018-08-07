@@ -8,7 +8,7 @@
                   <a class="uk-navbar-item uk-logo" href="search"><img src="https://res.cloudinary.com/dzt4wkac0/image/upload/v1533233202/LogoHBSmall3.png" alt="HBlogo"></a>
                   <div class="uk-navbar-item">
                       <form action="javascript:void(0)">
-                          <input class="uk-input uk-form-width-large" [(ngModel)]="search" name="search" type="text" placeholder="Search your cause">
+                          <input class="uk-input uk-form-width-large" [(ngModel)]="search" name="search" type="text" placeholder="Search your cause" disable>
                             <!-- <div *ngFor="let ngo of ngos | filter:'name':search">
                                 <a  href="/ong/{{ngo._id}}">{{ngo.name}}</a>
                             </div> -->
@@ -22,7 +22,7 @@
                       <a class="uk-navbar-item" href="search">Home</a>
                   </li>
                   <li>
-                      <a class="uk-navbar-item" href="volunteer/{{user._id}}">
+                      <a class="uk-navbar-item" [routerLink]="['/volunteer',user._id]">
                           <img class="uk-border-circle" src="{{user.photoURL}}" width="40" height="40" alt="photoURL">
                       </a>
                   </li>
@@ -60,35 +60,35 @@
               <h2 class="uk-modal-title">Register a NGO</h2>
           </div>
           <div class="uk-modal-body" uk-overflow-auto>
-              <form validated>
+              <form>
                   <div class="uk-margin">
                       <div class="uk-inline">
                           <span class="uk-form-icon" uk-icon="icon: user"></span>
-                          <input class="uk-input" type="text" placeholder="Name" [(ngModel)]="name" name="name" required>
+                          <input class="uk-input" type="text" placeholder="Name" [(ngModel)]="ong.name" name="name">
                       </div>
                   </div>
                   <div class="uk-margin">
                       <div class="uk-inline">
                           <span class="uk-form-icon" uk-icon="icon: pencil"></span>
-                          <input class="uk-input" type="text" placeholder="What you do?" [(ngModel)]="summary" name="summary" required>
+                          <input class="uk-input" type="text" placeholder="How your NGO Help?" [(ngModel)]="ong.summary" name="summary">
                       </div>
                   </div>
                   <div class="uk-margin">
                       <div class="uk-inline">
                           <span class="uk-form-icon" uk-icon="icon: location"></span>
-                          <input class="uk-input" type="text" placeholder="Location" [(ngModel)]="location" name="location" required>
+                          <input class="uk-input" type="text" placeholder="Location" [(ngModel)]="ong.location" name="location">
                       </div>
                   </div>
                   <div class="uk-margin">
                       <div class="uk-inline">
                           <span class="uk-form-icon" uk-icon="icon: receiver"></span>
-                          <input class="uk-input" type="number" placeholder="Telephone" [(ngModel)]="telephone" name="telephone">
+                          <input class="uk-input" type="number" placeholder="Telephone" [(ngModel)]="ong.telephone" name="telephone">
                       </div>
                   </div>
                   <div class="uk-margin">
                       <div class="uk-inline">
                           <span class="uk-form-icon" uk-icon="icon: link"></span>
-                          <input class="uk-input" type="text" placeholder="Website" [(ngModel)]="webSite" name="webSite" >
+                          <input class="uk-input" type="text" placeholder="Website" [(ngModel)]="ong.webSite" name="webSite" >
                       </div>
                   </div>
                   <div class="uk-margin" uk-margin>
@@ -98,15 +98,15 @@
                       </div>
                       <button class="uk-button uk-button-default">Submit</button>
                   </div>
-                  <!-- <p class="uk-text-bold">Your NGO principal causes:</p>
+                  <p class="uk-text-bold">Your NGO principal causes:</p>
                   <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                      <label><input class="uk-checkbox" type="checkbox"> Poverty</label>
-                      <label><input class="uk-checkbox" type="checkbox"> Human Rights</label>
-                      <label><input class="uk-checkbox" type="checkbox"> Health</label>
-                      <label><input class="uk-checkbox" type="checkbox"> Education</label>
-                      <label><input class="uk-checkbox" type="checkbox"> Climate Change</label>
-                      <label><input class="uk-checkbox" type="checkbox"> Animals</label>
-                  </div> -->
+                      <label><input class="uk-checkbox" type="checkbox" [(ngModel)]="ong.poverty" name="poverty" value="true"> Poverty</label>
+                        <label><input class="uk-checkbox" type="checkbox" [(ngModel)]="ong.humanRigths" name="humanRigths" value="true"> Human Rights</label>
+                        <label><input class="uk-checkbox" type="checkbox" [(ngModel)]="ong.health" name="health" value="true"> Health</label>
+                        <label><input class="uk-checkbox" type="checkbox" [(ngModel)]="ong.education" name="education" value="true"> Education</label>
+                        <label><input class="uk-checkbox" type="checkbox" [(ngModel)]="ong.climateChange" name="climateChange" value="true"> Climate Change</label>
+                        <label><input class="uk-checkbox" type="checkbox" [(ngModel)]="ong.animals" name="animals" value="true"> Animals</label>
+                  </div>
               </form>
           </div>
           <div class="uk-modal-footer uk-text-right">

@@ -17,7 +17,7 @@
                       <li data-color="white">
                         <div *ngFor="let event of events">
                             <div class="uk-card uk-card-default">
-                                <div class="uk-card-header">
+                                <div class="uk-card-header event">
                                     <div class="uk-grid-small uk-flex-middle" uk-grid>
                                         <div class="uk-width-auto">
                                             <a href="/event/{{event._id}}">
@@ -26,20 +26,20 @@
                                         </div>
                                         <div class="uk-width-expand">
                                             
-                                                <h3 class="uk-card-title uk-margin-remove-bottom">
-                                                    <a href="/event/{{event._id}}" class="uk-link-heading">
-                                                    {{event.title}}
-                                                    </a>
-                                                </h3>
-                                            
-                                            <!-- <p class="uk-text-meta uk-margin-remove-top">{{eventOngOwner.name}}</p> -->
+                                            <h3 class="uk-card-title uk-margin-remove-bottom">
+                                                <a href="/event/{{event._id}}" class="uk-link-heading" style="color: white">
+                                                {{event.title}}
+                                                </a>
+                                            </h3>
+                                            <p class="uk-text-meta uk-margin-remove-top" style="color: white">ONG</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="uk-card-body">
-                                    <p>Date</p>
-                                    <p>{{event.description}}</p>
-                                    <p>{{event.location}}</p>
+                                    
+                                    <p><b>Date: </b></p>
+                                    <p>Description: {{event.summary}}</p>
+                                    <p>Location: {{event.location}}</p>
                                 </div>
                             </div>
                             <br>
@@ -49,17 +49,17 @@
                       <li data-color="blue">
                         <div *ngFor="let job of jobs">
                             <div class="uk-card uk-card-default">
-                                <div class="uk-card-header">
+                                <div class="uk-card-header job">
                                     <div class="uk-grid-small uk-flex-middle" uk-grid>
                                         <div class="uk-width-expand">
                                             
-                                                <h3 class="uk-card-title uk-margin-remove-bottom">
-                                                    <a href="/job/{{job._id}}" class="uk-link-heading">
+                                            <h3 class="uk-card-title uk-margin-remove-bottom">
+                                                <a href="/job/{{job._id}}" class="uk-link-heading">
                                                     Postion: {{job.position}}
-                                                    </a>
-                                                </h3>
+                                                </a>
+                                            </h3>
                                             
-                                            <!-- <p class="uk-text-meta uk-margin-remove-top">{{jobOngOwner.name}}</p> -->
+                                            <p class="uk-text-meta uk-margin-remove-top">ONG</p>
                                         </div>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@
                       <li data-color="black">
                         <div *ngFor="let ong of ongs">
                             <div class="uk-card uk-card-default">
-                                <div class="uk-card-header">
+                                <div class="uk-card-header ong">
                                     <div class="uk-grid-small uk-flex-middle" uk-grid>
                                         <div class="uk-width-auto">
                                             <a href="/ong/{{ong._id}}" class="uk-link-muted">
@@ -86,7 +86,7 @@
                                         <div class="uk-width-expand">
                                             
                                                 <h3 class="uk-card-title uk-margin-remove-bottom">
-                                                    <a href="/ong/{{ong._id}}" class="uk-link-heading">
+                                                    <a href="/ong/{{ong._id}}" class="uk-link-heading" style="color: white">
                                                     {{ong.name}}
                                                     </a>
                                                 </h3>

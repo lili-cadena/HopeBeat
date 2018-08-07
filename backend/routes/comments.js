@@ -3,7 +3,7 @@ const Coomment = require ('../models/Comment');
 const Eevent = require ('../models/Event');
 
 //Post new Comment at Event
-router.post('/event/:id', (req,res,next)=>{
+router.post('/comment/:id', (req,res,next)=>{
   Coomment.create(req.body)
   .then(comments=>{
     return Eevent.findByIdAndUpdate(req.params.id, {$push:{ comments: comments }}, {new: true})
@@ -14,8 +14,8 @@ router.post('/event/:id', (req,res,next)=>{
       return res.status(501).json({e})
     })
   })
-  .catch(()=>{
-    next()
+  .catch(e=>{
+    return res.status(401).json(e)
   })
 })
 

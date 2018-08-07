@@ -7,7 +7,8 @@ import { map } from 'rxjs/operators'
 })
 export class ExperiencesService {
 
-  url = "/experience/"
+  url = 'http://localhost:3000/experience/'
+  // url = '/experience/'
 
   constructor(
     private http: Http,
@@ -26,8 +27,8 @@ export class ExperiencesService {
   }
 
   //Create one Experience
-  createExperience(obj){
-    return this.http.post(this.url, obj)
+  createExperience(id, obj){
+    return this.http.post(this.url + id, obj)
     .pipe(map((res: Response)=>res.json()))                                                             
   }    
     

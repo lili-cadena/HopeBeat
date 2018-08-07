@@ -1,17 +1,24 @@
 <app-nav-bar></app-nav-bar>
 
+<!-- <div *ngFor="let job of jobs">
+    <a href="#applicants" class="uk-link-heading">
+        <p><b>Applicants: </b>{{job.position}}</p>
+     </a>
+</div> -->
+
 <div id="ngoProfile">
 
-    <div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-inline" data-src="https://i.pinimg.com/564x/12/2f/03/122f030d382fd76f36c628e296050e94.jpg" uk-img>
+    <div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-inline" data-src="https://static1.squarespace.com/static/53b4d49de4b00894c69c7a0c/t/53f55bdde4b0a95765d3ec7f/1408588765988/Mint+Watercolor+Wallpaper_Pixejoo.jpg" uk-img>
         <span class="uk-position-left uk-position-medium uk-text-lead uk-text-bold" >
             <img class="uk-border-circle uk-position-medium" src="{{ong.photoURL}}" width="150" height="150">
+            {{ong.name}}
         </span>
         <div>
             <a class="uk-position-bottom-right uk-position-medium" href="#" uk-icon="icon: pencil"></a>
         </div>
-        <div>
+        <!-- <div>
             <button class="uk-button uk-button-danger uk-position-bottom-right uk-position-large" type="button" (click)="follow()">Follow</button>
-        </div>
+        </div> -->
     </div>
 
     <div class="uk-section uk-section-default">
@@ -30,7 +37,7 @@
                             <li data-color="white">
                                 <div *ngFor="let event of events">
                                     <div class="uk-card uk-card-default">
-                                        <div class="uk-card-header">
+                                        <div class="uk-card-header event">
                                             <div class="uk-grid-small uk-flex-middle" uk-grid>
                                                 <div class="uk-width-auto">
                                                     <a href="/event/{{event._id}}">
@@ -39,75 +46,76 @@
                                                 </div>
                                                 <div class="uk-width-expand">
                                                     
-                                                        <h3 class="uk-card-title uk-margin-remove-bottom">
-                                                            <a href="/event/{{event._id}}" class="uk-link-heading">
-                                                            {{event.title}}
-                                                            </a>
-                                                        </h3>
+                                                    <h3 class="uk-card-title uk-margin-remove-bottom">
+                                                        <a href="/event/{{event._id}}" class="uk-link-heading" style="color:white">
+                                                        {{event.title}}
+                                                        </a>
+                                                    </h3>
+                                                    <p class="uk-text-meta uk-margin-remove-top" style="color: white">ONG</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-card-body">
+                                            
+                                            <p><b>Date: </b></p>
+                                            <p>{{event.summary}}</p>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>                            
+                            </li>
+                            <li data-color="black">
+                                <div *ngFor="let job of jobs">
+                                    <div class="uk-card uk-card-default">
+                                        <div class="uk-card-header job">
+                                            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                                <div class="uk-width-expand">
                                                     
+                                                    <h3 class="uk-card-title uk-margin-remove-bottom">
+                                                        <a href="/job/{{job._id}}" class="uk-link-heading">
+                                                            Position: {{job.position}}
+                                                        </a>
+                                                    </h3>
                                                     <p class="uk-text-meta uk-margin-remove-top">ONG</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="uk-card-body">
-                                            <p>Date</p>
-                                            <p>{{event.description}}</p>
-                                            <p>{{event.location}}</p>
+                                            
+                                            <p><b>Weekly required hours: </b>{{job.weeklyRequiredHours}}</p>
+                                            <p>Description: {{job.description}}</p>
                                         </div>
                                     </div>
                                     <br>
-                                </div>                            </li>
-                            <li data-color="black">
-                                <div *ngFor="let job of jobs">
-                            <div class="uk-card uk-card-default">
-                                <div class="uk-card-header">
-                                    <div class="uk-grid-small uk-flex-middle" uk-grid>
-                                        <div class="uk-width-expand">
-                                            
-                                                <h3 class="uk-card-title uk-margin-remove-bottom">
-                                                    <a href="/job/{{job._id}}" class="uk-link-heading">
-                                                    Postion: {{job.position}}
-                                                    </a>
-                                                </h3>
-                                            
-                                            <p class="uk-text-meta uk-margin-remove-top">ONG</p>
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="uk-card-body">
-                                    
-                                    <p><b>Weekly required hours: </b>{{job.weeklyRequiredHours}}</p>
-                                    <p>Description: {{job.description}}</p>
-                                </div>
-                            </div>
-                            <br>
-                        </div>
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <div>
-                        <div class="uk-card uk-card-default">
-                                <div class="uk-card-header">
-                                    <div class="uk-grid-small uk-flex-middle" uk-grid>
-                                        <div class="uk-width-auto">
-                                        </div>
-                                        <div class="uk-width-expand">
-                                                <h3 class="uk-card-title uk-margin-remove-bottom">
-                                                    {{ong.name}}
-                                                </h3>
-                                            
-                                            <p class="uk-text-meta uk-margin-remove-top">{{ong.causes}}</p>
-                                        </div>
-                                    </div>
+                    <div class="uk-card uk-card-default">
+                        <div class="uk-card-header ong">
+                            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                <div class="uk-width-auto">
                                 </div>
-                                <div class="uk-card-body">
-                                    <p>{{ong.summary}}</p>
+                                <div class="uk-width-expand">
+                                    <h3 class="uk-card-title uk-margin-remove-bottom" style="color:white">
+                                        {{ong.name}}
+                                    </h3>
+                                            
+                                    <p class="uk-text-meta uk-margin-remove-top">{{ong.causes}}</p>
                                 </div>
                             </div>
+                            </div>
+                        <div class="uk-card-body">
+                        <p>{{ong.summary}}</p>
+                        <br>
+                        
+                        <p><b>Location: </b>{{ong.location}}</p>
+                    </div>
                 </div>
-                
+                </div>
             </div>
         </div>
     </div>
@@ -135,54 +143,60 @@
 
                     <li data-color="white">
                         <div class="uk-margin-medium uk-form-width-large">
-                            <form validated>
+                            <form>
                                 <fieldset class="uk-fieldset">
                                     <div class="uk-margin">
                                         <div class="uk-inline">
-                                            <span class="uk-form-icon" uk-icon="icon: tag"></span>
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Title" [(ngModel)]="title" name="title" required>
+                                            <span class="uk-form-icon" uk-icon="icon: info"></span>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Title" [(ngModel)]="event.title" name="title">
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: calendar"></span>
-                                            <input class="uk-input uk-form-width-medium" type="date" placeholder="Start Day" [(ngModel)]="startDate" name="startDate" required>
+                                            <input class="uk-input uk-form-width-medium" type="date" placeholder="Start Day" [(ngModel)]="event.startDate" name="startDate">
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: calendar"></span>
-                                            <input class="uk-input uk-form-width-medium" type="date" placeholder="Final Day" [(ngModel)]="finalDate" name="finalDate">
+                                            <input class="uk-input uk-form-width-medium" type="date" placeholder="Final Day" [(ngModel)]="event.finalDate" name="finalDate">
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: clock"></span>
-                                            <input class="uk-input uk-form-width-medium" type="number" placeholder="Start Hour" [(ngModel)]="startHour" name="startHour" required>
+                                            <input class="uk-input uk-form-width-medium" type="number" placeholder="Start Hour" [(ngModel)]="event.startHour" name="startHour">
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: clock"></span>
-                                            <input class="uk-input uk-form-width-medium" type="number" placeholder="Final Hour" [(ngModel)]="finalHour" name="finalHour" required>
+                                            <input class="uk-input uk-form-width-medium" type="number" placeholder="Final Hour" [(ngModel)]="event.finalHour" name="finalHour">
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: location"></span>
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Location" [(ngModel)]="location" name="location" required>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Location" [(ngModel)]="event.location" name="location">
+                                        </div>
+                                    </div>
+                                    <div class="uk-margin">
+                                        <div class="uk-inline">
+                                            <span class="uk-form-icon" uk-icon="icon: tag"></span>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Summary" [(ngModel)]="event.summary" name="summary">
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: info"></span>
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Decription" [(ngModel)]="description" name="description" required>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Decription" [(ngModel)]="event.description" name="description">
                                         </div>
                                     </div>
                                     <div class="uk-margin" uk-margin>
                                         <div uk-form-custom="target: true">
                                             <input type="file">
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Poster" [(ngModel)]="photo" name="photo" disabled>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Poster" [(ngModel)]="event.photo" name="photo" disabled>
                                         </div>
                                         <button class="uk-button uk-button-default">Upload</button>
                                     </div>
@@ -204,37 +218,37 @@
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: user"></span>
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Position" [(ngModel)]="position" name="position" required>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Position" [(ngModel)]="job.position" name="position" required>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: clock"></span>
-                                            <input class="uk-input uk-form-width-medium" type="number" placeholder="Required hours" [(ngModel)]="weeklyRequiredHours" name="weeklyRequiredHours" required>
+                                            <input class="uk-input uk-form-width-medium" type="number" placeholder="Required hours" [(ngModel)]="job.weeklyRequiredHours" name="weeklyRequiredHours" required>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: location"></span>
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Location" [(ngModel)]="location" name="location" required>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Location" [(ngModel)]="location" name="job.location" required>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: info"></span>
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Decription" [(ngModel)]="description" name="description" required>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Decription" [(ngModel)]="description" name="job.description" required>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: list"></span>
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Requests" [(ngModel)]="requests" name="requests" required>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Requests" [(ngModel)]="requests" name="job.requests" required>
                                         </div>
                                     </div>
                                     <div class="uk-margin" uk-margin>
                                         <div uk-form-custom="target: true">
                                             <input type="file">
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Poster" [(ngModel)]="photo" name="photo" disabled>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Poster" [(ngModel)]="photo" name="job.photo" disabled>
                                         </div>
                                         <button class="uk-button uk-button-default">Upload</button>                                        
                                     </div>
