@@ -12,10 +12,11 @@ import { VolunteersService } from '../../services/volunteers.service';
 export class VolunteerProfileComponent implements OnInit {
   exp: any = {}
   experience: any = {}
+  experiences
   id: any = ''
   user: any = JSON.parse(localStorage.getItem('user'))
 
-  volunteer: any = {}
+  newVolunter: any = []
   volunteers: any = {}
 
   position: any = ''
@@ -38,7 +39,8 @@ export class VolunteerProfileComponent implements OnInit {
 
       this.volunteersService.getOneVolunteer(this.id)
       .subscribe(volunteer=>{
-        this.volunteer = volunteer
+        this.newVolunter = volunteer
+        this.experiences = this.newVolunter.experiences
       })
     })
   }

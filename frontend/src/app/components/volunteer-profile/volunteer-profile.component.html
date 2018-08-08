@@ -1,5 +1,8 @@
 <app-nav-bar></app-nav-bar>
 
+<div *ngFor="let experience of experiences">
+  {{experience.position}}
+</div>
 
 
 <div id="userProfile">
@@ -29,16 +32,16 @@
                       <div class="uk-width-expand"> 
                           <h3 class="uk-card-title uk-margin-remove-bottom">
                               <p class="uk-link-heading" style="color:white">
-                                  Position: {{volunteer.experiences[0].position}}
+                                  <!-- Position: {{volunteer.experiences[0].position}} -->
                               </p>
                           </h3>
-                          <p class="uk-text-meta uk-margin-remove-top" style="color: white">{{volunteer.experiences[0].ong}}</p>
+                          <!-- <p class="uk-text-meta uk-margin-remove-top" style="color: white">{{volunteer.experiences[0].ong}}</p> -->
                       </div>
                   </div>
               </div>
               <div class="uk-card-body">
                 <p class="uk-article-meta">From April 2012 to October 2012</p>
-                <p>Description: {{volunteer.experiences[0].description}}</p>
+                <!-- <p>Description: {{volunteer.experiences[0].description}}</p> -->
               </div>
           </div>
   </div>

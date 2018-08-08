@@ -17,7 +17,6 @@ import { VolunteerProfileComponent } from './components/volunteer-profile/volunt
 
 //Services
 import { AuthService } from './services/auth.service';
-import { CommentsService} from './services/comments.service';
 import { EventsService} from './services/events.service';
 import { JobsService } from './services/jobs.service';
 import { ExperiencesService } from './services/experiences.service';
@@ -47,7 +46,6 @@ import { VolunteersService } from './services/volunteers.service';
   ],
   providers: [
     AuthService,
-    CommentsService,
     EventsService,
     JobsService,
     ExperiencesService,

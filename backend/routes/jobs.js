@@ -4,6 +4,7 @@ const ONG = require ('../models/ONG');
 
 //Post new Job
 router.post('/:id', (req,res,next)=>{
+  req.body.owner = req.params.id
   Job.create(req.body)
   .then(job=>{
     return ONG.findByIdAndUpdate(req.params.id, {$push:{ jobs: job }}, {new: true})

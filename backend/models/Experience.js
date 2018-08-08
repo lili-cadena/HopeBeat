@@ -2,16 +2,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const experienceSchema = new Schema({
+    owner:{
+        type:Schema.Types.ObjectId,
+        ref:"Volunteer"
+    },
     description: String,
     position: {
         type: String,
     },
     ong: {
         type: String,
-    },
-    logo: {
-        type: String,
-        default: ''
     },
     startDate: {
         type: Date,

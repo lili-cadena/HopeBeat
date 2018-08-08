@@ -16,8 +16,6 @@ router.post('/', isAuth, (req,res)=>{
   ONG.create(req.body)
   .then(ong=>{
     return Volunteer.findByIdAndUpdate(req.user._id, {$push:{ ongs: ong._id }}, {new: true})
-    //req.user.ongs.push(ong._id)
-   // return req.user.save()
     .then(volunteer=>{
       return res.status(202).json(volunteer)
     })

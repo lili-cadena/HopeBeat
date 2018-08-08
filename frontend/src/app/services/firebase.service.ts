@@ -32,8 +32,6 @@ export class FirebaseService {
   loginWithFacebook(){
     firebase.auth().signInWithPopup(this.provider)
     .then(snap=>{
-      
-      console.log(this.provider)
 
       this.cred = snap.credential
       let token = this.cred.accessToken
@@ -47,7 +45,7 @@ export class FirebaseService {
 
   _sendTokenToBackend(snap){
     const token = snap.credential.accessToken
-    fetch(this.url + 'facebook/login', {
+    fetch(this.url + '/facebook/login', {
       method:'post',
       headers:{
         'Authorization': `Bearer ${token}`

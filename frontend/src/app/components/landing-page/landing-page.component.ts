@@ -47,6 +47,8 @@ export class LandingPageComponent implements OnInit {
     }, e=>{
       this.logError = 'Something went wrong, try again please'
     })
+
+    
   }
 
   ngOnInit() {

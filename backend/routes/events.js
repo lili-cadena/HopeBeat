@@ -4,6 +4,7 @@ const ONG = require ('../models/ONG');
 
 //Post new Event
 router.post('/:id', (req,res,next)=>{
+  req.body.owner = req.params.id
   Eevent.create(req.body)
   .then(event=>{
     return ONG.findByIdAndUpdate(req.params.id, {$push:{ events: event }}, {new: true})
@@ -44,10 +45,9 @@ router.get('/:id', (req,res)=>{
   })
 })
 
-//Edit a Event
+//Apply event Event
 router.put('/:id', (req,res)=>{
   Eevent.findByIdAndUpdate(req.params.id, req.body, {new:true})
-  .populate("ong")
   .then(event=>{
       return res.status(202).json(event)
   })

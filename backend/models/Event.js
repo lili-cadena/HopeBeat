@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
+    owner:{
+        type:Schema.Types.ObjectId,
+        ref:"ONG"
+    },
     title: {
         type: String,
     },
@@ -27,6 +31,10 @@ const eventSchema = new Schema({
     },
     description: {
         type: String,
+    },
+    cover: {
+        type: String,
+        default: 'https://i.pinimg.com/564x/c4/8b/b2/c48bb2ea7a089f5d0b504b9045485670.jpg'
     },
     photo: {
         type: String,

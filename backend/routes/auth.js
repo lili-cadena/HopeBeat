@@ -6,6 +6,7 @@ router.post('/facebook/login', passport.authenticate('facebook-token'), (req,res
   return res.json(req.user)
 })
 
+//Logout
 router.get('/logout', (req,res)=>{
   req.logout();
   return res.status(200).json({message: 'Successfully log out'})
@@ -34,16 +35,5 @@ router.post('/signup', (req,res)=>{
   })
 })
 
-//Bring one Volunteer
-router.get('/login', (req,res)=>{
-  Volunteer.findById(req.user.id)
-  .populate('ongs')
-  .then(volunteer=>{
-    return res.status(200).json(volunteer);
-  })
-  .catch(e=>{
-      return res.status(401).json(e)
-  })
-})
 
 module.exports = router;

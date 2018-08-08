@@ -32,18 +32,18 @@ export class EventsService {
   createEvent(id, obj){
     return this.http.post(this.url + id, obj)
     .pipe(map((res: Response)=>res.json()))                                                             
-  }    
-    
-  //Edit a Event
-  editOneEvent(id, obj, x){
-    return this.http.put(this.url + id, obj, x) 
-    .pipe(map((res: Response)=>res.json()))    
-  }    
+  } 
 
   //delete a Event
   deleteEvent(id){
     return this.http.delete(this.url + id)
     .pipe(map((res: Response)=>res.json()))                                                                
   }
+
+  //Apply event
+  editOneEvent(id, obj){
+    return this.http.put(this.url + id, obj) 
+    .pipe(map((res: Response)=>res.json()))    
+  } 
 
 }
