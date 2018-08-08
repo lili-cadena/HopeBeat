@@ -83,13 +83,13 @@ const ongs = require('./routes/ongs');
 const volunteers = require('./routes/volunteers');
 
 
-app.use('/', auth);
-app.use('/', comments);
-app.use('/', events);
-app.use('/', experiences);
-app.use('/', jobs);
-app.use('/ong', ongs);
-app.use('/', volunteers);
+app.use('/api/', auth);
+app.use('/api/comments', comments);
+app.use('/api/events', events);
+app.use('/api/experiences', experiences);
+app.use('/api/jobs', jobs);
+app.use('/api/ongs', ongs);
+app.use('/api/volunteers', volunteers);
 app.use('/', index);
 
 

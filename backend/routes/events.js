@@ -3,7 +3,7 @@ const Eevent = require ('../models/Event');
 const ONG = require ('../models/ONG');
 
 //Post new Event
-router.post('/event/:id', (req,res,next)=>{
+router.post('/:id', (req,res,next)=>{
   Eevent.create(req.body)
   .then(event=>{
     return ONG.findByIdAndUpdate(req.params.id, {$push:{ events: event }}, {new: true})
@@ -20,7 +20,7 @@ router.post('/event/:id', (req,res,next)=>{
 })
 
 //Get Events
-router.get('/event', (req,res)=>{
+router.get('/', (req,res)=>{
   Eevent.find()
   .populate("ong")
   .then(events =>{
@@ -32,7 +32,7 @@ router.get('/event', (req,res)=>{
 })
 
 //Get one Event
-router.get('/event/:id', (req,res)=>{
+router.get('/:id', (req,res)=>{
   Eevent.findById(req.params.id)
   .populate("ong")
   .then(event =>{
@@ -45,7 +45,7 @@ router.get('/event/:id', (req,res)=>{
 })
 
 //Edit a Event
-router.put('/event/:id', (req,res)=>{
+router.put('/:id', (req,res)=>{
   Eevent.findByIdAndUpdate(req.params.id, req.body, {new:true})
   .populate("ong")
   .then(event=>{
@@ -57,7 +57,7 @@ router.put('/event/:id', (req,res)=>{
 })
 
 //Delete a Event
-router.delete('/event/:id', (req,res,next)=>{
+router.delete('/:id', (req,res,next)=>{
   Eevent.findByIdAndRemove(req.params.id)
   .populate("ong")
   .then(event=>{

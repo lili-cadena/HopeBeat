@@ -2,7 +2,7 @@ const router = require ('express').Router();
 const Volunteer = require ('../models/Volunteer');
 
 //Get Volunteers
-router.get('/volunteer', (req,res)=>{
+router.get('/', (req,res)=>{
   Volunteer.find()
   .then(volunteers =>{
     return res.status(202).json(volunteers);
@@ -13,7 +13,7 @@ router.get('/volunteer', (req,res)=>{
 })
 
 //Get one Volunteer
-router.get('/volunteer/:id', (req,res)=>{
+router.get('/:id', (req,res)=>{
   Volunteer.findById(req.params.id)
   .populate('experiences')
   .then(volunteer=>{
@@ -26,7 +26,7 @@ router.get('/volunteer/:id', (req,res)=>{
 })
 
 //Edit a Volunteer
-router.put('/volunteer/:id', (req,res)=>{
+router.put('/:id', (req,res)=>{
   Volunteer.findByIdAndUpdate(req.params.id, req.body, {new:true})
   .then(volunteer=>{
       return res.status(202).json(volunteer)
@@ -37,7 +37,7 @@ router.put('/volunteer/:id', (req,res)=>{
 })
 
 //Delete a Volunteer
-router.delete('/volunteer/:id', (req,res)=>{
+router.delete('/:id', (req,res)=>{
   Volunteer.findByIdAndRemove(req.params.id)
   .then(volunteer=>{
       return res.status(202).json(volunteer)

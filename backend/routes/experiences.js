@@ -3,7 +3,7 @@ const Experience = require ('../models/Experience');
 const Volunteer = require ('../models/Volunteer');
 
 //Post new Experience
-router.post('/experience/:id', (req,res,next)=>{
+router.post('/:id', (req,res,next)=>{
   Experience.create(req.body)
   .then(experience=>{
     return Volunteer.findByIdAndUpdate(req.params.id, {$push:{ experiences: experience }}, {new: true})
@@ -20,7 +20,7 @@ router.post('/experience/:id', (req,res,next)=>{
 })
 
 //Get Experiences
-router.get('/experience', (req,res)=>{
+router.get('/', (req,res)=>{
   Experience.find()
   .then(experiences =>{
     return res.status(202).json(experiences);
@@ -31,7 +31,7 @@ router.get('/experience', (req,res)=>{
 })
 
 //Get one Experience
-router.get('/experience/:id', (req,res)=>{
+router.get('/:id', (req,res)=>{
   Experience.findById(req.params.id)
   .then(experience=>{
     if(!experience) return res.status(404)
@@ -43,7 +43,7 @@ router.get('/experience/:id', (req,res)=>{
 })
 
 //Edit a Experience
-router.put('/experience/:id', (req,res)=>{
+router.put('/:id', (req,res)=>{
   Experience.findByIdAndUpdate(req.params.id, req.body, {new:true})
   .then(experience=>{
       return res.status(202).json(experience)
@@ -54,7 +54,7 @@ router.put('/experience/:id', (req,res)=>{
 })
 
 //Delete a Experience
-router.delete('/experience/:id', (req,res,next)=>{
+router.delete('/:id', (req,res,next)=>{
   Experience.findByIdAndRemove(req.params.id)
   .then(experience=>{
       return res.status(202).json(experience)

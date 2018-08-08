@@ -8,8 +8,8 @@ import { map } from 'rxjs/operators'
 })
 export class CommentsService {
 
-  url = 'http://localhost:3000/comment/'
-  // url = '/comment/'
+  url = 'http://localhost:3000/api/comments/'
+  // url = '/api/comments/'
 
   constructor(
     private http: Http,

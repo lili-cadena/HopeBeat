@@ -3,7 +3,7 @@ const Coomment = require ('../models/Comment');
 const Eevent = require ('../models/Event');
 
 //Post new Comment at Event
-router.post('/comment/:id', (req,res,next)=>{
+router.post('/:id', (req,res,next)=>{
   Coomment.create(req.body)
   .then(comments=>{
     return Eevent.findByIdAndUpdate(req.params.id, {$push:{ comments: comments }}, {new: true})
@@ -20,7 +20,7 @@ router.post('/comment/:id', (req,res,next)=>{
 })
 
 //Get Comments
-router.get('/comment', (req,res)=>{
+router.get('/', (req,res)=>{
   Coomment.find()
   .then(comments =>{
     return res.status(202).json(comments);
@@ -31,7 +31,7 @@ router.get('/comment', (req,res)=>{
 })
 
 //Get one Comment
-router.get('/comment/:id', (req,res)=>{
+router.get('/:id', (req,res)=>{
   Coomment.findById(req.params.id)
   .then(comment =>{
     if(!comment) return res.status(404)
@@ -43,7 +43,7 @@ router.get('/comment/:id', (req,res)=>{
 })
 
 //Edit a Comment
-router.put('/comment/:id', (req,res)=>{
+router.put('/:id', (req,res)=>{
   Coomment.findByIdAndUpdate(req.params.id, req.body, {new:true})
   .then(comment=>{
       return res.status(202).json(comment)
@@ -54,7 +54,7 @@ router.put('/comment/:id', (req,res)=>{
 })
 
 //Delete a Comment
-router.delete('/comment/:id', (req,res,next)=>{
+router.delete('/:id', (req,res,next)=>{
   Coomment.findByIdAndRemove(req.params.id)
   .then(comment=>{
       return res.status(202).json(comment)

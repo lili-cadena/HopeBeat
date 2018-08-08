@@ -63,40 +63,48 @@
               <form>
                   <div class="uk-margin">
                       <div class="uk-inline">
-                          <span class="uk-form-icon" uk-icon="icon: user"></span>
-                          <input class="uk-input" type="text" placeholder="Name" [(ngModel)]="ong.name" name="name">
+                          <input class="uk-input" type="text" placeholder="Name" [(ngModel)]="ong.name" name="name" #ngoName="ngModel" required>
+                          <div *ngIf="ngoName.errors && (ngoName.dirty || ngoName.touched)">
+                            <p class="error" [hidden]="!ngoName.errors.required">
+                                Name is required
+                            </p>
+                          </div>
                       </div>
                   </div>
                   <div class="uk-margin">
                       <div class="uk-inline">
-                          <span class="uk-form-icon" uk-icon="icon: pencil"></span>
-                          <input class="uk-input" type="text" placeholder="How your NGO Help?" [(ngModel)]="ong.summary" name="summary">
+                          <input class="uk-input" type="text" placeholder="How your NGO Help?" [(ngModel)]="ong.summary" name="summary" #ngoSummary="ngModel" required>
+                          <div *ngIf="ngoSummary.errors && (ngoSummary.dirty || ngoSummary.touched)">
+                            <p class="error" [hidden]="!ngoSummary.errors.required">
+                                Summary is required
+                            </p>
+                          </div>
                       </div>
                   </div>
                   <div class="uk-margin">
                       <div class="uk-inline">
-                          <span class="uk-form-icon" uk-icon="icon: location"></span>
-                          <input class="uk-input" type="text" placeholder="Location" [(ngModel)]="ong.location" name="location">
+                          <input class="uk-input" type="text" placeholder="Location" [(ngModel)]="ong.location" name="location" #ngoLocation="ngModel" required>
+                          <div *ngIf="ngoLocation.errors && (ngoLocation.dirty || ngoLocation.touched)">
+                            <p class="error" [hidden]="!ngoLocation.errors.required">
+                                Location is required
+                            </p>
+                          </div>
                       </div>
                   </div>
                   <div class="uk-margin">
                       <div class="uk-inline">
-                          <span class="uk-form-icon" uk-icon="icon: receiver"></span>
-                          <input class="uk-input" type="number" placeholder="Telephone" [(ngModel)]="ong.telephone" name="telephone">
+                          <input class="uk-input" type="number" placeholder="Telephone" [(ngModel)]="ong.telephone" name="telephone" #ngoTelephone="ngModel" minlength="10">
+                          <div *ngIf="ngoTelephone.errors && (ngoTelephone.dirty || ngoTelephone.touched)">
+                            <p class="error" [hidden]="!ngoTelephone.errors.minlength">
+                                Telephone must be at least 10 characters long
+                            </p>
+                          </div>
                       </div>
                   </div>
                   <div class="uk-margin">
                       <div class="uk-inline">
-                          <span class="uk-form-icon" uk-icon="icon: link"></span>
                           <input class="uk-input" type="text" placeholder="Website" [(ngModel)]="ong.webSite" name="webSite" >
                       </div>
-                  </div>
-                  <div class="uk-margin" uk-margin>
-                      <div uk-form-custom="target: true">
-                          <input type="file">
-                          <input class="uk-input uk-form-width-medium" type="text" placeholder="Select your logo" disabled>
-                      </div>
-                      <button class="uk-button uk-button-default">Submit</button>
                   </div>
                   <p class="uk-text-bold">Your NGO principal causes:</p>
                   <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">

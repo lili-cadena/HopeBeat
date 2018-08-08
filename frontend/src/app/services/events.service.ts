@@ -7,8 +7,8 @@ import { map } from 'rxjs/operators'
 })
 export class EventsService {
 
-  url = 'http://localhost:3000/event/'
-  // url = '/event/'
+  url = 'http://localhost:3000/api/events/'
+  // url = '/api/events/'
 
   id = ''
 

@@ -1,11 +1,5 @@
 <app-nav-bar></app-nav-bar>
 
-<!-- <div *ngFor="let job of jobs">
-    <a href="#applicants" class="uk-link-heading">
-        <p><b>Applicants: </b>{{job.position}}</p>
-     </a>
-</div> -->
-
 <div id="ngoProfile">
 
     <div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-inline" data-src="https://static1.squarespace.com/static/53b4d49de4b00894c69c7a0c/t/53f55bdde4b0a95765d3ec7f/1408588765988/Mint+Watercolor+Wallpaper_Pixejoo.jpg" uk-img>
@@ -147,58 +141,73 @@
                                 <fieldset class="uk-fieldset">
                                     <div class="uk-margin">
                                         <div class="uk-inline">
-                                            <span class="uk-form-icon" uk-icon="icon: info"></span>
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Title" [(ngModel)]="event.title" name="title">
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Title" [(ngModel)]="event.title" name="title" #eventTitle="ngModel" required>
+                                            <div *ngIf="eventTitle.errors && (eventTitle.dirty || eventTitle.touched)">
+                                                <p class="error" [hidden]="!eventTitle.errors.required">
+                                                    Title is required
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
-                                            <span class="uk-form-icon" uk-icon="icon: calendar"></span>
-                                            <input class="uk-input uk-form-width-medium" type="date" placeholder="Start Day" [(ngModel)]="event.startDate" name="startDate">
+                                            <input class="uk-input uk-form-width-medium" type="date" placeholder="Start Day" [(ngModel)]="event.startDate" name="startDate" #eventDate="ngModel" required>
+                                            <div *ngIf="eventDate.errors && (eventDate.dirty || eventDate.touched)">
+                                                <p class="error" [hidden]="!eventDate.errors.required">
+                                                    Date is required
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
-                                            <span class="uk-form-icon" uk-icon="icon: calendar"></span>
                                             <input class="uk-input uk-form-width-medium" type="date" placeholder="Final Day" [(ngModel)]="event.finalDate" name="finalDate">
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
-                                            <span class="uk-form-icon" uk-icon="icon: clock"></span>
-                                            <input class="uk-input uk-form-width-medium" type="number" placeholder="Start Hour" [(ngModel)]="event.startHour" name="startHour">
+                                            <input class="uk-input uk-form-width-medium" type="number" placeholder="Start Hour" [(ngModel)]="event.startHour" name="startHour" #eventStartHour="ngModel" required>
+                                            <div *ngIf="eventStartHour.errors && (eventStartHour.dirty || eventStartHour.touched)">
+                                                <p class="error" [hidden]="!eventStartHour.errors.required">
+                                                    Start hour is required
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
-                                            <span class="uk-form-icon" uk-icon="icon: clock"></span>
-                                            <input class="uk-input uk-form-width-medium" type="number" placeholder="Final Hour" [(ngModel)]="event.finalHour" name="finalHour">
+                                            <input class="uk-input uk-form-width-medium" type="number" placeholder="Final Hour" [(ngModel)]="event.finalHour" name="finalHour" #eventFinalHour="ngModel" required>
+                                            <div *ngIf="eventFinalHour.errors && (eventFinalHour.dirty || eventFinalHour.touched)">
+                                                <p class="error" [hidden]="!eventFinalHour.errors.required">
+                                                    Final hour is required
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
-                                            <span class="uk-form-icon" uk-icon="icon: location"></span>
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Location" [(ngModel)]="event.location" name="location">
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Address" [(ngModel)]="event.location" name="location" #eventLocation="ngModel" required>
+                                            <div *ngIf="eventLocation.errors && (eventLocation.dirty || eventLocation.touched)">
+                                                <p class="error" [hidden]="!eventLocation.errors.required">
+                                                    Adress is required
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
-                                            <span class="uk-form-icon" uk-icon="icon: tag"></span>
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Summary" [(ngModel)]="event.summary" name="summary">
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Summary" [(ngModel)]="event.summary" name="summary" #eventSummary="ngModel" required>
+                                            <div *ngIf="eventSummary.errors && (eventSummary.dirty || eventSummary.touched)">
+                                                <p class="error" [hidden]="!eventSummary.errors.required">
+                                                    Summary is required
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
-                                            <span class="uk-form-icon" uk-icon="icon: info"></span>
                                             <input class="uk-input uk-form-width-medium" type="text" placeholder="Decription" [(ngModel)]="event.description" name="description">
                                         </div>
-                                    </div>
-                                    <div class="uk-margin" uk-margin>
-                                        <div uk-form-custom="target: true">
-                                            <input type="file">
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Poster" [(ngModel)]="event.photo" name="photo" disabled>
-                                        </div>
-                                        <button class="uk-button uk-button-default">Upload</button>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
@@ -217,40 +226,48 @@
                                 <fieldset class="uk-fieldset">
                                     <div class="uk-margin">
                                         <div class="uk-inline">
-                                            <span class="uk-form-icon" uk-icon="icon: user"></span>
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Position" [(ngModel)]="job.position" name="position" required>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Position" [(ngModel)]="job.position" name="position" #jobPosition="ngModel" required>
+                                            <div *ngIf="jobPosition.errors && (jobPosition.dirty || jobPosition.touched)">
+                                                <p class="error" [hidden]="!jobPosition.errors.required">
+                                                    Position title is required
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
-                                            <span class="uk-form-icon" uk-icon="icon: clock"></span>
-                                            <input class="uk-input uk-form-width-medium" type="number" placeholder="Required hours" [(ngModel)]="job.weeklyRequiredHours" name="weeklyRequiredHours" required>
+                                            <input class="uk-input uk-form-width-medium" type="number" placeholder="Required hours" [(ngModel)]="job.weeklyRequiredHours" name="weeklyRequiredHours" #jobWeeklyRequiredHours="ngModel" required>
+                                            <div *ngIf="jobWeeklyRequiredHours.errors && (jobWeeklyRequiredHours.dirty || jobWeeklyRequiredHours.touched)">
+                                                <p class="error" [hidden]="!jobWeeklyRequiredHours.errors.required">
+                                                    Weekly required hours are required
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
-                                            <span class="uk-form-icon" uk-icon="icon: location"></span>
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Location" [(ngModel)]="location" name="job.location" required>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Location" [(ngModel)]="location" name="job.location">
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
-                                            <span class="uk-form-icon" uk-icon="icon: info"></span>
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Decription" [(ngModel)]="description" name="job.description" required>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Decription" [(ngModel)]="description" name="job.description" #jobDescription="ngModel" required>
+                                            <div *ngIf="jobDescription.errors && (jobDescription.dirty || jobDescription.touched)">
+                                                <p class="error" [hidden]="!jobDescription.errors.required">
+                                                    Job description is required
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
-                                            <span class="uk-form-icon" uk-icon="icon: list"></span>
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Requests" [(ngModel)]="requests" name="job.requests" required>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Requests" [(ngModel)]="requests" name="job.requests" #jobRequests="ngModel" required>
+                                            <div *ngIf="jobRequests.errors && (jobRequests.dirty || jobRequests.touched)">
+                                                <p class="error" [hidden]="!jobRequests.errors.required">
+                                                    Job requests is required
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="uk-margin" uk-margin>
-                                        <div uk-form-custom="target: true">
-                                            <input type="file">
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Poster" [(ngModel)]="photo" name="job.photo" disabled>
-                                        </div>
-                                        <button class="uk-button uk-button-default">Upload</button>                                        
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">

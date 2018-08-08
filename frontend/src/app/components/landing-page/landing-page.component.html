@@ -81,20 +81,32 @@
                 <fieldset class="uk-fieldset">
                     <div class="uk-margin">
                         <div class="uk-inline">
-                            <span class="uk-form-icon" uk-icon="icon: user"></span>
-                            <input class="uk-input uk-form-width-large" type="text" placeholder="User Name" [(ngModel)]="auth.username" name="username">
+                            <input class="uk-input uk-form-width-large" type="text" placeholder="User Name" [(ngModel)]="auth.username" name="username" #myUsername="ngModel" minlength="6">
+                            <div *ngIf="myUsername.errors && (myUsername.dirty || myUsername.touched)">
+                                <p class="error" [hidden]="!myUsername.errors.minlength">
+                                    Username must be at least 6 characters long.
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <div class="uk-margin">
                         <div class="uk-inline">
-                            <span class="uk-form-icon" uk-icon="icon: mail"></span>
-                            <input class="uk-input uk-form-width-large" type="email" placeholder="Email" [(ngModel)]="auth.email" name="email">
+                            <input class="uk-input uk-form-width-large" type="email" placeholder="Email" [(ngModel)]="auth.email" name="email" #myEmail="ngModel" email>
+                            <div *ngIf="myEmail.errors && (myEmail.dirty || myEmail.touched)">
+                                <p class="error" [hidden]="!myEmail.errors.email">
+                                    Valid email is required
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <div class="uk-margin">
                         <div class="uk-inline">
-                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                            <input class="uk-input uk-form-width-large" type="password" placeholder="Password" [(ngModel)]="auth.password" name="password" #myPassword="ngModel">
+                            <input class="uk-input uk-form-width-large" type="password" placeholder="Password" [(ngModel)]="auth.password" name="password" #myPassword="ngModel" required>
+                            <div *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
+                                <p class="error" [hidden]="!myPassword.errors.required">
+                                    Password is required
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <p class="uk-text-bold">Choose 3 causes of your interest:</p>
@@ -129,14 +141,24 @@
            <form>
                 <div class="uk-margin">
                     <div class="uk-inline">
-                        <span class="uk-form-icon" uk-icon="icon: user"></span>
-                        <input class="uk-input uk-form-width-large" type="email" [(ngModel)]="auth.email" name="email">
+                        <!-- <span class="uk-form-icon" uk-icon="icon: user"></span> -->
+                        <input class="uk-input uk-form-width-large" type="email" placeholder="Email" [(ngModel)]="auth.email" name="email" #myEmail="ngModel" email>
+                        <div *ngIf="myEmail.errors && (myEmail.dirty || myEmail.touched)">
+                            <p class="error" [hidden]="!myEmail.errors.email">
+                                Valid email is required
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <div class="uk-margin">
                     <div class="uk-inline">
-                        <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                        <input class="uk-input uk-form-width-large" type="password" [(ngModel)]="auth.password" name="password">
+                        <!-- <span class="uk-form-icon" uk-icon="icon: lock"></span> -->
+                        <input class="uk-input uk-form-width-large" type="password" placeholder="Password" [(ngModel)]="auth.password" name="password" #myPassword="ngModel" required>
+                        <div *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
+                            <p class="error" [hidden]="!myPassword.errors.required">
+                                Password is required
+                            </p>
+                        </div>
                     </div>
                 </div>
             </form>
