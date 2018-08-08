@@ -53,6 +53,7 @@ export class VolunteerProfileComponent implements OnInit {
       this.experiencesService.createExperience(this.id, this.experience)
       .subscribe(experience=>{
         this.experience = experience
+        console.log(experience)
       })
     })
   }

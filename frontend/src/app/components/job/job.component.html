@@ -9,10 +9,10 @@
                     <p class="uk-text-meta uk-margin-remove-top"><b>Weekly required hours: </b>{{job.weeklyRequiredHours}}</p>
                     <ul class="uk-nav">     
                         <li>
-                            <!-- <a class="uk-link-muted" href="#">
-                            <img src="https://botw-pd.s3.amazonaws.com/styles/logo-thumbnail/s3/0020/8510/brand.gif?itok=EUd2bI_M" width="40" height="40">
-                                    Soñar Despierto
-                            </a> -->
+                            <a class="uk-link-muted" href="#">
+                            <img src="{{job.owner.photoURL}}" width="40" height="40">
+                                {{job.owner.name}}
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -55,6 +55,7 @@
                         <h3 class="uk-card-title">Requests: </h3>
                         <p>{{job.requests}}</p>
                     </div>
+                    
                 </div>
             </div>
             <div>
@@ -62,6 +63,18 @@
                     <div class="uk-card-body">                        
                         <p><span class="uk-margin-small-right" uk-icon="icon: clock; ratio: 1.5"></span> Weekly required hours: {{job.weeklyRequiredHours}}</p>
                         <p><span class="uk-margin-small-right" uk-icon="icon: location; ratio: 1.5"></span>Location: {{job.location}}</p>
+                    </div>
+                    <div *ngIf="user._id == ongOwner.owner" class="uk-card-body">
+                        <div *ngFor="let applicant of applicants">
+                            <ul class="uk-nav">     
+                                <li>
+                                    <a class="uk-link-muted" href="/volunteer/{{applicant._id}}">
+                                    <img src="{{applicant.photoURL}}" width="40" height="40">
+                                        {{applicant.username}}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

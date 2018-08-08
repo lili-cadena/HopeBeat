@@ -31,13 +31,13 @@
                                                 {{event.title}}
                                                 </a>
                                             </h3>
-                                            <p class="uk-text-meta uk-margin-remove-top" style="color: white">ONG</p>
+                                            <p class="uk-text-meta uk-margin-remove-top" style="color: white">{{event.owner.name}}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="uk-card-body">
                                     
-                                    <p><b>Date: </b></p>
+                                    <p><b>Date: {{event.startDate | date}}</b></p>
                                     <p>Description: {{event.summary}}</p>
                                     <p>Location: {{event.location}}</p>
                                 </div>
@@ -59,7 +59,7 @@
                                                 </a>
                                             </h3>
                                             
-                                            <p class="uk-text-meta uk-margin-remove-top">ONG</p>
+                                            <p class="uk-text-meta uk-margin-remove-top">{{job.owner.name}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@
                                                     </a>
                                                 </h3>
                                             
-                                            <p class="uk-text-meta uk-margin-remove-top">{{ong.causes}}</p>
+                                                <p class="uk-text-meta uk-margin-remove-top" style="color: white">{{ong.owner.username}}</p>
                                         </div>
                                     </div>
                                 </div>

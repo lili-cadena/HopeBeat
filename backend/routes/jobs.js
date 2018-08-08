@@ -23,7 +23,8 @@ router.post('/:id', (req,res,next)=>{
 //Get Jobs
 router.get('/', (req,res)=>{
   Job.find()
-  .populate("ong", "applicants")
+  .populate('owner')
+  .populate('applicants')
   .then(jobs =>{
     return res.status(202).json(jobs);
   })
@@ -35,7 +36,8 @@ router.get('/', (req,res)=>{
 //Get one Job
 router.get('/:id', (req,res)=>{
   Job.findById(req.params.id)
-  .populate("ong")
+  .populate('applicants')
+  .populate('owner')
   .then(job=>{
     if(!job) return res.status(404)
       return res.status(202).json(job);
@@ -48,7 +50,7 @@ router.get('/:id', (req,res)=>{
 //Edit a Job
 router.put('/:id', (req,res)=>{
   Job.findByIdAndUpdate(req.params.id, req.body, {new:true})
-  .populate("ong")
+  .populate("applicants")
   .then(job=>{
       return res.status(202).json(job)
   })

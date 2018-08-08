@@ -4,7 +4,7 @@ const Volunteer = require ('../models/Volunteer');
 
 //Post new Experience
 router.post('/:id', (req,res,next)=>{
-  req.body.owner = req.user._id
+  req.body.owner = req.params.id
   Experience.create(req.body)
   .then(experience=>{
     return Volunteer.findByIdAndUpdate(req.params.id, {$push:{ experiences: experience }}, {new: true})

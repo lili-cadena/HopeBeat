@@ -22,13 +22,12 @@ const jobSchema = new Schema({
         type: String,
     },
     ong:{
-            type: Schema.Types.ObjectId,
-            ref: 'ONG',
+        type: String,
     },
     applicants: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Vounteer',
+            ref: 'Volunteer',
         }
     ]
 },{

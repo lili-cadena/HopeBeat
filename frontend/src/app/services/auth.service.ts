@@ -8,8 +8,8 @@ import { Observable } from 'rxjs'
 })
 export class AuthService {
   
-  url = "http://localhost:3000/api/"
-  // url = '/api/'
+  // url = "http://localhost:3000/api/"
+  url = '/api/'
 
   constructor(
     private http: Http,

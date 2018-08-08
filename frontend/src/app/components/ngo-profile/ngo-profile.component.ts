@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OngsService } from '../../services/ongs.service';
 import { EventsService } from '../../services/events.service';
 import { JobsService } from '../../services/jobs.service';
-import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-ngo-profile',
@@ -11,7 +10,9 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./ngo-profile.component.css']
 })
 export class NgoProfileComponent implements OnInit {
-  ong: any = {}
+  user: any = JSON.parse(localStorage.getItem('user'))
+
+  ong: any = []
   o: any = {}
   event: any = {}
   job: any = {}
@@ -32,7 +33,6 @@ export class NgoProfileComponent implements OnInit {
     private eventService: EventsService,
     private jobService: JobsService,
     private router: Router,
-    private authService: AuthService,
   ) { }
 
   ngOnInit() {
@@ -43,8 +43,9 @@ export class NgoProfileComponent implements OnInit {
       this.ongsService.getOneOng(this.id)
       .subscribe(ong=>{
         this.ong = ong
-        this.jobs = ong.jobs
-        this.events = ong.events
+        this.jobs = this.ong.jobs
+        this.events = this.ong.events
+        console.log(ong.events)
       })
     })
   }
@@ -63,28 +64,6 @@ export class NgoProfileComponent implements OnInit {
     })
   }
   
-
-  //Follow
-  follow(){
-    const user = JSON.parse(localStorage.getItem('user'))
-
-    this.activeRoute.params
-    .subscribe(params=>{
-      this.id = params.id
-
-      this.ongsService.editOneOng(this.id, {followers : user})
-      .subscribe(o=>{
-        this.o = o
-      })
-
-      this.authService.editVolunteerProfile(this.id, {following : this.o.id})
-      .subscribe(user=>{
-        user = user
-        localStorage.setItem('user', JSON.stringify(user))
-      })
-    })
-  }
-
   // ONG Settings
 
   deleteOng(){
@@ -133,7 +112,7 @@ export class NgoProfileComponent implements OnInit {
     if(!window.confirm('Are you sure?')) return
     this.jobService.deleteJob(this.job)
     .subscribe(()=>{
-      this.router.navigate(['ong/' + this.ong._id])
+      this.router.navigate(['ong/' + this.job._id])
     })
   }
 

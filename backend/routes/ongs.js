@@ -31,6 +31,7 @@ router.post('/', isAuth, (req,res)=>{
 //Get all ONGs
 router.get('/', (req,res)=>{
   ONG.find()
+  .populate('owner')
   .then(ongs =>{
     return res.status(202).json(ongs);
   })
@@ -43,6 +44,7 @@ router.get('/', (req,res)=>{
 router.get('/:id', (req,res)=>{
   ONG.findById(req.params.id)
   .populate('events')
+  .populate('jobs')
   .then(ong=>{
     if(!ong) return res.status(404)
       return res.status(202).json(ong);

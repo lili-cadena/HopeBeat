@@ -8,10 +8,11 @@ import { JobsService } from '../../services/jobs.service';
   styleUrls: ['./job.component.css']
 })
 export class JobComponent implements OnInit {
-  
+
+  ongOwner: any = {}
+  applicants: any = {}
   job: any = {}
   id: any = ''
-  applicants: any
   user: any = JSON.parse(localStorage.getItem('user'))
 
   constructor(
@@ -27,6 +28,9 @@ export class JobComponent implements OnInit {
       this.jobsService.getOneJob(this.id)
       .subscribe(job=>{
         this.job = job
+        this.applicants = job.applicants
+        this.ongOwner = job.owner
+        console.log(this.ongOwner.owner)
       })
 
     })
@@ -39,10 +43,9 @@ export class JobComponent implements OnInit {
     .subscribe(params=>{
       this.id = params.id
 
-      this.jobsService.editOneJob(this.id, {applicants : user})
+      this.jobsService.editOneJob(this.id,{$push:{applicants : user}})
       .subscribe(job=>{
         this.job = job
-        console.log(job)
       })
     })
   }

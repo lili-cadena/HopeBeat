@@ -7,12 +7,6 @@
             <img class="uk-border-circle uk-position-medium" src="{{ong.photoURL}}" width="150" height="150">
             {{ong.name}}
         </span>
-        <div>
-            <a class="uk-position-bottom-right uk-position-medium" href="#" uk-icon="icon: pencil"></a>
-        </div>
-        <!-- <div>
-            <button class="uk-button uk-button-danger uk-position-bottom-right uk-position-large" type="button" (click)="follow()">Follow</button>
-        </div> -->
     </div>
 
     <div class="uk-section uk-section-default">
@@ -24,7 +18,7 @@
                         <ul class="uk-subnav uk-subnav-pill">
                             <li uk-filter-control="[data-color='white']"><a href="#">Events</a></li>
                             <li uk-filter-control="[data-color='black']"><a href="#">Volunteering</a></li>
-                            <li><a class="uk-button" href="#add" uk-icon="icon: plus" uk-toggle></a></li>
+                            <li><a *ngIf="user._id == ong.owner" class="uk-button" href="#add" uk-icon="icon: plus" uk-toggle></a></li>
                         </ul>
                             
                         <ul class="js-filter uk-child-width-1-2 uk-child-width-1-2@m uk-text-center" uk-grid>
@@ -51,7 +45,7 @@
                                         </div>
                                         <div class="uk-card-body">
                                             
-                                            <p><b>Date: </b></p>
+                                            <p><b>Date: {{event.startDate | date}}</b></p>
                                             <p>{{event.summary}}</p>
                                         </div>
                                     </div>

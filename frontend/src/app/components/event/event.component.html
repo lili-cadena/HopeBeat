@@ -6,12 +6,12 @@
             <div>
                 <div class="uk-card">
                     <h3 class="uk-card-title">{{event.title}}</h3>
-                    <p class="uk-text-meta uk-margin-remove-top">Saturday, August 11th 2018</p>
+                    <p class="uk-text-meta uk-margin-remove-top">From: {{event.startDate | date}} to {{event.finalDate | date}}</p>
                     <ul class="uk-nav">     
                         <li>
                             <a class="uk-link-muted" href="#">
-                            <img src="https://botw-pd.s3.amazonaws.com/styles/logo-thumbnail/s3/0020/8510/brand.gif?itok=EUd2bI_M" width="40" height="40">
-                                    Soñar Despierto
+                            <img src="{{event.owner.photoURL}}" width="40" height="40">
+                                {{event.owner.name}}
                             </a>
                         </li>
                     </ul>
@@ -40,12 +40,21 @@
                         <img src="http://sdespierto.org/cat/imgCatalog/vvtolucaoct0152.gif" alt="">
                     </div>
                     <div class="uk-card-body">
-                        <h3 class="uk-card-title">Description</h3>
+                        <h3 class="uk-card-title">Description: </h3>
                         <p>{{event.description}}</p>
                     </div>
-                    <!-- <div class="uk-card-footer">
-                        <a href="#" class="uk-button uk-button-text">Comments</a>
-                    </div> -->
+                    <div class="uk-card-body">
+                        <div *ngFor="let attendee of attendees">
+                            <ul class="uk-nav">     
+                                <li>
+                                    <a class="uk-link-muted" href="#">
+                                    <img src="{{attendee.photoURL}}" width="40" height="40">
+                                        {{attendee.username}}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div>
@@ -57,7 +66,7 @@
                             <div class="uk-width-expand"> 
                                 <h3 class="uk-card-title uk-margin-remove-bottom">
                                     <p class="uk-link-heading" style="color:white">
-                                        Saturday, August 11th 2018
+                                        {{event.startDate | date}}
                                     </p>
                                 </h3>
                                 <p class="uk-text-meta uk-margin-remove-top" style="color: white">ONG</p>
@@ -65,9 +74,8 @@
                         </div>
                     </div>
                     <div class="uk-card-body">                        
-                        <p><span class="uk-margin-small-right" uk-icon="icon: clock; ratio: 1.5"></span> 10:00 to 18:00</p>
-                        <p><span class="uk-margin-small-right" uk-icon="icon: location; ratio: 1.5"></span> Location</p>
-                        <p>Map</p>
+                        <p><span class="uk-margin-small-right" uk-icon="icon: clock; ratio: 1.5"></span> From: {{event.startHour}}:00 to {{event.finalHour}}:00</p>
+                        <p><span class="uk-margin-small-right" uk-icon="icon: location; ratio: 1.5"></span> {{event.location}}</p>
                     </div>
                     <div class="uk-card-media-bottom">
                         <img src="" alt="">

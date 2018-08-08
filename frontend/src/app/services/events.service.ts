@@ -7,8 +7,8 @@ import { map } from 'rxjs/operators'
 })
 export class EventsService {
 
-  url = 'http://localhost:3000/api/events/'
-  // url = '/api/events/'
+  // url = 'http://localhost:3000/api/events/'
+  url = '/api/events/'
 
   id = ''
 
@@ -33,6 +33,12 @@ export class EventsService {
     return this.http.post(this.url + id, obj)
     .pipe(map((res: Response)=>res.json()))                                                             
   } 
+  
+  //Edit event
+  editOneEvent(id, obj){
+    return this.http.put(this.url + id, obj) 
+    .pipe(map((res: Response)=>res.json()))    
+  } 
 
   //delete a Event
   deleteEvent(id){
@@ -40,10 +46,6 @@ export class EventsService {
     .pipe(map((res: Response)=>res.json()))                                                                
   }
 
-  //Apply event
-  editOneEvent(id, obj){
-    return this.http.put(this.url + id, obj) 
-    .pipe(map((res: Response)=>res.json()))    
-  } 
+  
 
 }

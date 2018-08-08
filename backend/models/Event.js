@@ -40,10 +40,6 @@ const eventSchema = new Schema({
         type: String,
         default: 'https://www.uccmpolice.com/wp-content/uploads/2017/08/Events-icons.png'
     },
-    ong:{
-        type: Schema.Types.ObjectId,
-        ref: 'ONG',
-    },
     attendees:[
         {
             type: Schema.Types.ObjectId,

@@ -8,7 +8,8 @@ import { EventsService } from '../../services/events.service';
   styleUrls: ['./event.component.css']
 })
 export class EventComponent implements OnInit {
-
+  
+  attendees: any = {}
   event: any = {}
   comment: any = {}
   id: any = ''
@@ -27,6 +28,7 @@ export class EventComponent implements OnInit {
       this.eventsService.getOneEvent(this.id)
       .subscribe(event=>{
         this.event = event
+        this.attendees = event.attendees
       })
 
     })
@@ -38,6 +40,7 @@ export class EventComponent implements OnInit {
     this.activeRoute.params
     .subscribe(params=>{
       this.id = params.id
+      
       this.eventsService.editOneEvent(this.id, {$push:{attendees : user}})
       .subscribe(event=>{
         this.event = event

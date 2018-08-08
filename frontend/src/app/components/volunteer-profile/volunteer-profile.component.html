@@ -1,10 +1,5 @@
 <app-nav-bar></app-nav-bar>
 
-<div *ngFor="let experience of experiences">
-  {{experience.position}}
-</div>
-
-
 <div id="userProfile">
 
   <div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-inline" data-src="https://static1.squarespace.com/static/53b4d49de4b00894c69c7a0c/t/53f55c34e4b017d3b3110891/1408588852546/Peach+Watercolor+Wallpaper_Pixejoo.jpg" uk-img>
@@ -12,18 +7,12 @@
         <img class="uk-border-circle uk-position-medium" src="{{user.photoURL}}" width="150" height="150">
         {{user.username}}
     </span>
-    <div>
-        <a class="uk-position-bottom-right uk-position-medium" href="#" uk-icon="icon: pencil"></a>
-    </div>
-    <!-- <div>
-        <button class="uk-button uk-button-danger uk-position-bottom-right uk-position-large" type="button" (click)="contact()">Contact</button>
-    </div> -->
   </div>
 
   <a class="uk-position-medium" href="#add" uk-icon="icon: plus" uk-toggle></a>
 
       <div class="uk-container uk-container-large">
-          
+          <div *ngFor="let experience of experiences">
           <div class="uk-card uk-card-default">
               <div class="uk-card-header experience">
                   <div class="uk-grid-small uk-flex-middle" uk-grid>
@@ -32,18 +21,20 @@
                       <div class="uk-width-expand"> 
                           <h3 class="uk-card-title uk-margin-remove-bottom">
                               <p class="uk-link-heading" style="color:white">
-                                  <!-- Position: {{volunteer.experiences[0].position}} -->
+                                  Position: {{experience.position}}
                               </p>
                           </h3>
-                          <!-- <p class="uk-text-meta uk-margin-remove-top" style="color: white">{{volunteer.experiences[0].ong}}</p> -->
+                          <p class="uk-text-meta uk-margin-remove-top" style="color: white">{{experience.ong}}</p>
                       </div>
                   </div>
               </div>
               <div class="uk-card-body">
-                <p class="uk-article-meta">From April 2012 to October 2012</p>
-                <!-- <p>Description: {{volunteer.experiences[0].description}}</p> -->
+                <p class="uk-article-meta">From {{experience.startDate | date}} to {{experience.finalDate | date}}</p>
+                <p>Description: {{experience.description}}</p>
               </div>
           </div>
+          <br>
+      </div>
   </div>
 
   <div id="add" uk-modal>

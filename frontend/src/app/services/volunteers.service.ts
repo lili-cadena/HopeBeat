@@ -7,8 +7,8 @@ import { map } from 'rxjs/operators'
 })
 export class VolunteersService {
 
-  url = 'http://localhost:3000/api/volunteers/'
-  // url = '/api/volunteers/'
+  // url = 'http://localhost:3000/api/volunteers/'
+  url = '/api/volunteers/'
 
   constructor(
     private http: Http,

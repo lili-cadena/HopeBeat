@@ -7,8 +7,8 @@ import { map } from 'rxjs/operators'
 })
 export class ExperiencesService {
 
-  url = 'http://localhost:3000/api/experiences/'
-  // url = '/api/experiences/'
+  // url = 'http://localhost:3000/api/experiences/'
+  url = '/api/experiences/'
 
   constructor(
     private http: Http,

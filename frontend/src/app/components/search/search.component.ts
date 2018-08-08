@@ -30,13 +30,11 @@ export class SearchComponent implements OnInit {
     this.eventsService.getAllEvents()
     .subscribe(events=>{
       this.events = events
-      // this.eventOngOwner = events.ong
     })
 
     this.jobsService.getAllJobs()
     .subscribe(jobs=>{
       this.jobs = jobs
-      // this.jobOngOwner = jobs.ong
     })
   }
 
