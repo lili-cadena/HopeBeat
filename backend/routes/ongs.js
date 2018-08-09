@@ -11,7 +11,7 @@ function isAuth(req,res,next){
 }
 
 //Post new ONG
-router.post('/', isAuth, (req,res)=>{
+router.post('/', (req,res)=>{
   req.body.owner = req.user._id
   ONG.create(req.body)
   .then(ong=>{
